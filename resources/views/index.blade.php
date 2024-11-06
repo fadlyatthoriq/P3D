@@ -11,30 +11,6 @@
             <nav class="nav navbar navbar-expand-lg navbar-light iq-navbar">
                 <div class="container-fluid navbar-inner">
                     <a href="../dashboard/index.html" class="navbar-brand">
-                        <!--Logo start-->
-                        <!--logo End-->
-
-                        <!--Logo start-->
-                        <!-- <div class="logo-main">
-                        <div class="logo-normal">
-                          <img
-                            src="{{ asset('assets/images/dashboard/image.png') }}"
-                            alt=""
-                            class="img-fluid"
-                            width="80px"
-                          />
-                        </div>
-                        <div class="logo-mini">
-                          <img
-                            src="{{ asset('assets/images/dashboard/image.png') }}"
-                            alt=""
-                            class="img-fluid"
-                            width="40px"
-                          />
-                        </div>
-                      </div> -->
-                        <!--logo End-->
-
                         <h4 class="logo-title">SIPANDU</h4>
                     </a>
                     <div class="sidebar-toggle" data-toggle="sidebar" data-active="true">
@@ -137,18 +113,21 @@
                                 <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="700">
                                     <div class="card-body">
                                         <div class="progress-widget">
-                                            <div id="circle-progress-01"
-                                                class="text-center circle-progress-01 circle-progress circle-progress-primary"
-                                                data-min-value="0" data-max-value="100" data-value="90"
-                                                data-type="percent">
-                                                <svg class="card-slie-arrow icon-24" width="24" viewBox="0 0 24 24">
-                                                    <path fill="currentColor"
-                                                        d="M5,17.59L15.59,7H9V5H19V15H17V8.41L6.41,19L5,17.59Z" />
+                                            <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35"
+                                                    viewBox="0 0 24 24" fill="none" stroke="#0d6efd" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="round">
+                                                    <line x1="18" y1="20" x2="18" y2="10">
+                                                    </line>
+                                                    <line x1="12" y1="20" x2="12" y2="4">
+                                                    </line>
+                                                    <line x1="6" y1="20" x2="6" y2="14">
+                                                    </line>
                                                 </svg>
                                             </div>
                                             <div class="progress-detail">
-                                                <p class="mb-2">Total </p>
-                                                <h4 class="counter">$560K</h4>
+                                                <p class="mb-2">Total Data Wajib Pajak </p>
+                                                <h4 class="counter">1</h4>
                                             </div>
                                         </div>
                                     </div>
@@ -203,48 +182,9 @@
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between">
                                     <div class="header-title">
-                                        <h4 class="card-title">Bootstrap Datatables</h4>
+                                        <h4 class="card-title">Data Wajib Pajak</h4>
                                     </div>
                                     <div class="">
-                                        <a href="#"
-                                            class=" text-center btn btn-primary btn-icon mt-lg-0 mt-md-0 mt-3"
-                                            data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                            <i class="btn-inner">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                                    viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                        d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                                                </svg>
-                                            </i>
-                                            <span>New Permission</span>
-                                        </a>
-                                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-                                            data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                            aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="staticBackdropLabel">Add new
-                                                            permission</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div class="form-group">
-                                                            <label for="email" class="form-label">permission
-                                                                title</label>
-                                                            <input type="email" class="form-control" id="email"
-                                                                aria-describedby="email" placeholder="Permission Title">
-                                                        </div>
-                                                        <div class="text-start">
-                                                            <button type="button" class="btn btn-primary"
-                                                                data-bs-dismiss="modal">Save</button>
-                                                            <button type="button" class="btn btn-danger">Cancel</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <a href="#"
                                             class=" text-center btn btn-primary btn-icon mt-lg-0 mt-md-0 mt-3"
                                             data-bs-toggle="modal" data-bs-target="#staticBackdrop-1">
@@ -255,7 +195,7 @@
                                                         d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                                 </svg>
                                             </i>
-                                            <span>New Role</span>
+                                            <span>Tambah Data</span>
                                         </a>
                                         <div class="modal fade" id="staticBackdrop-1" data-bs-backdrop="static"
                                             data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
@@ -308,20 +248,35 @@
                                         <table id="datatable" class="table table-striped" data-toggle="data-table">
                                             <thead>
                                                 <tr>
-                                                    <th>Name</th>
-                                                    <th>Position</th>
-                                                    <th>Office</th>
-                                                    <th>Age</th>
-                                                    <th>Start date</th>
-                                                    <th>Salary</th>
+                                                    <th>NPWPD</th>
+                                                    <th>Nama Usaha</th>
+                                                    <th>Jenis Pendapatan</th>
+                                                    <th>Alamat Usaha</th>
+                                                    <th>Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td> Fadly Atthoriq
-                                                        <div style="float:right;">
+                                                    <td>Fadly Atthoriq</td>
+                                                    <td>System Architect</td>
+                                                    <td>Edinburgh</td>
+                                                    <td class="text-truncate" style="max-width: 180px;">Lorem ipsum dolor
+                                                        sit amet, consectetur adipisicing elit. Deleniti in sint aliquid eos
+                                                        commodi, natus excepturi delectus dicta illo voluptates est. Nulla
+                                                        alias deserunt veritatis quasi qui nostrum magni, pariatur
+                                                        consequatur, nemo accusamus ducimus ut officiis, nam vel nesciunt.
+                                                        Excepturi autem aliquid, qui nulla consequuntur velit nesciunt
+                                                        voluptas quaerat, incidunt illo recusandae placeat. Facilis totam
+                                                        libero harum placeat aspernatur tenetur, ab non ipsam aperiam
+                                                        corrupti quibusdam officiis id dolorem delectus accusamus incidunt
+                                                        esse ad quia saepe quis magni et at dolor soluta. Veritatis
+                                                        voluptates dolorem maiores minima harum odit nihil explicabo hic,
+                                                        itaque recusandae quidem libero inventore architecto sequi unde!
+                                                    </td>
+                                                    <td>
+                                                        <div style="float: left;">
                                                             <a class="btn btn-sm btn-icon text-primary flex-end"
-                                                                data-bs-toggle="tooltip" title="Edit User"
+                                                                data-bs-toggle="tooltip" title="Edit Data"
                                                                 href="#">
                                                                 <span class="btn-inner">
                                                                     <svg class="icon-20" width="20"
@@ -345,7 +300,7 @@
                                                                 </span>
                                                             </a>
                                                             <a class="btn btn-sm btn-icon text-danger "
-                                                                data-bs-toggle="tooltip" title="Delete User"
+                                                                data-bs-toggle="tooltip" title="Delete Data"
                                                                 href="#">
                                                                 <span class="btn-inner">
                                                                     <svg class="icon-20" width="20"
@@ -371,21 +326,15 @@
                                                             </a>
                                                         </div>
                                                     </td>
-                                                    <td>System Architect</td>
-                                                    <td>Edinburgh</td>
-                                                    <td>61</td>
-                                                    <td>2011/04/25</td>
-                                                    <td>$320,800</td>
                                                 </tr>
                                             </tbody>
                                             <tfoot>
                                                 <tr>
-                                                    <th>Name</th>
-                                                    <th>Position</th>
-                                                    <th>Office</th>
-                                                    <th>Age</th>
-                                                    <th>Start date</th>
-                                                    <th>Salary</th>
+                                                    <th>NPWPD</th>
+                                                    <th>Nama Usaha</th>
+                                                    <th>Jenis Pendapatan</th>
+                                                    <th>Alamat Usaha</th>
+                                                    <th>Aksi</th>
                                                 </tr>
                                             </tfoot>
                                         </table>
