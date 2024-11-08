@@ -29,7 +29,10 @@
     <link rel="stylesheet" href="{{ asset('assets/css/customizer.min.css')}}" />
 
     <!-- RTL Css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/rtl.min.css')}}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/rtl.min.css')}}" /> 
+
+    {{-- Map OpenLayers --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@latest/ol.css" type="text/css">
 </head>
 
 <body class="  ">
@@ -43,7 +46,7 @@
 
     <aside class="sidebar sidebar-default sidebar-white sidebar-base navs-rounded-all">
         <div class="sidebar-header d-flex align-items-center justify-content-start">
-            <a href="../dashboard/index.html" class="navbar-brand">
+            <a href="/" class="navbar-brand">
                 <!--Logo start-->
                 <!--logo End-->
     
@@ -93,7 +96,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../dashboard/index.html">
+                        <a class="nav-link active" aria-current="page" href="/">
                             <i class="icon">
                                 <svg width="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg" class="icon-20">
@@ -118,8 +121,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-maps" role="button"
-                            aria-expanded="false" aria-controls="sidebar-maps">
+                        <a class="nav-link" aria-current="page" href="/maps">
                             <i class="icon">
                                 <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -131,46 +133,7 @@
                                 </svg>
                             </i>
                             <span class="item-name">Maps</span>
-                            <i class="right-icon">
-                                <svg class="icon-18" xmlns="http://www.w3.org/2000/svg" width="18"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 5l7 7-7 7" />
-                                </svg>
-                            </i>
                         </a>
-                        <ul class="sub-nav collapse" id="sidebar-maps" data-bs-parent="#sidebar-menu">
-                            <li class="nav-item">
-                                <a class="nav-link" href="../dashboard/maps/google.html">
-                                    <i class="icon">
-                                        <svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10"
-                                            viewBox="0 0 24 24" fill="currentColor">
-                                            <g>
-                                                <circle cx="12" cy="12" r="8" fill="currentColor">
-                                                </circle>
-                                            </g>
-                                        </svg>
-                                    </i>
-                                    <i class="sidenav-mini-icon"> G </i>
-                                    <span class="item-name">Google</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../dashboard/maps/vector.html">
-                                    <i class="icon">
-                                        <svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10"
-                                            viewBox="0 0 24 24" fill="currentColor">
-                                            <g>
-                                                <circle cx="12" cy="12" r="8" fill="currentColor">
-                                                </circle>
-                                            </g>
-                                        </svg>
-                                    </i>
-                                    <i class="sidenav-mini-icon"> V </i>
-                                    <span class="item-name">Vector</span>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                 </ul>
                 <!-- Sidebar Menu End -->
@@ -497,6 +460,9 @@
 
     <!-- App Script -->
     <script src="{{ asset('assets/js/hope-ui.js')}}" defer></script>
+
+    {{-- Map OpenLayers --}}
+    <script src="https://cdn.jsdelivr.net/npm/ol@latest/ol.js"></script>
 </body>
 
 </html>

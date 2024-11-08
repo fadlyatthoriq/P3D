@@ -54,17 +54,7 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <li>
-                                        <a class="dropdown-item" href="../dashboard/app/user-profile.html">Profile</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="../dashboard/app/user-privacy-setting.html">Privacy
-                                            Setting</a>
-                                    </li>
-                                    <li>
-                                        <hr class="dropdown-divider" />
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="../dashboard/auth/sign-in.html">Logout</a>
+                                        <a class="dropdown-item" href="#">Logout</a>
                                     </li>
                                 </ul>
                             </li>
@@ -208,35 +198,36 @@
                                                             aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <div class="form-group">
-                                                            <label for="email" class="form-label">role title</label>
-                                                            <input type="email" class="form-control" id="email"
-                                                                aria-describedby="email" placeholder="Role Title">
-                                                        </div>
-                                                        <div>
-                                                            <span>status</span>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="radio"
-                                                                    name="exampleRadios" id="exampleRadios2"
-                                                                    value="option2">
-                                                                <label class="form-check-label" for="exampleRadios2">
-                                                                    yes
-                                                                </label>
+                                                        <form action="">
+                                                            @csrf
+                                                            <div class="form-group">
+                                                                <label for="npwpd" class="form-label">NPWPD</label>
+                                                                <input type="text" class="form-control" name="npwpd" id="npwpd"
+                                                                    aria-describedby="NPWPD" placeholder="NPWPD" required>
                                                             </div>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="radio"
-                                                                    name="exampleRadios" id="exampleRadios2"
-                                                                    value="option2">
-                                                                <label class="form-check-label" for="exampleRadios2">
-                                                                    no
-                                                                </label>
+                                                            <div class="form-group">
+                                                                <label for="namausaha" class="form-label">Nama Usaha</label>
+                                                                <input type="text" class="form-control" name="namausaha" id="namausaha"
+                                                                    aria-describedby="namausaha" placeholder="Nama Usaha" required>
                                                             </div>
-                                                        </div>
-                                                        <div class="text-start mt-2">
-                                                            <button type="button" class="btn btn-primary"
-                                                                data-bs-dismiss="modal">Save</button>
-                                                            <button type="button" class="btn btn-danger">Cancel</button>
-                                                        </div>
+                                                            <div class="form-group">
+                                                                <label for="jenispendapatan" class="form-label">Jenis Pendapatan</label>
+                                                                <input type="text" class="form-control" name="jenispendapatan" id="jenispendapatan"
+                                                                    aria-describedby="jenispendapatan" placeholder="Jenis Pendapatan" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="" class="mb-3">Alamat Usaha</label>
+                                                                <input type="text" class="form-control mb-1" name="latitude" id="latitude" 
+                                                                    aria-describedby="latitude" placeholder="Latitude (Filled Automatically)" readonly required>
+                                                                <input type="text" class="form-control mt-1" name="longtitude" id="longtitude" 
+                                                                    aria-describedby="longtitude" placeholder="Longtitude (Filled Automatically)" readonly required>
+                                                            </div>
+                                                            <div class="text-start mt-2">
+                                                                <button type="button" class="btn btn-primary"
+                                                                    data-bs-dismiss="modal">Save</button>
+                                                                <button type="button" class="btn btn-danger">Cancel</button>
+                                                            </div>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>
@@ -345,8 +336,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        </div>
         </div>
         <!-- Footer Section Start -->
         <footer class="footer">
