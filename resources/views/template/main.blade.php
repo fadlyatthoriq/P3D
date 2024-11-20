@@ -31,8 +31,7 @@
     <!-- RTL Css -->
     <link rel="stylesheet" href="{{ asset('assets/css/rtl.min.css')}}" /> 
 
-    {{-- Map OpenLayers --}}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@latest/ol.css" type="text/css">
+    @yield('css')
 </head>
 
 <body class="  ">
@@ -121,7 +120,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/maps">
+                        <a class="nav-link" aria-current="page" href="{{route('maps')}}">
                             <i class="icon">
                                 <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -461,8 +460,7 @@
     <!-- App Script -->
     <script src="{{ asset('assets/js/hope-ui.js')}}" defer></script>
 
-    {{-- Map OpenLayers --}}
-    <script src="https://cdn.jsdelivr.net/npm/ol@latest/ol.js"></script>
+    @stack('javascript')
 </body>
 
 </html>

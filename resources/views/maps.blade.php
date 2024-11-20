@@ -4,6 +4,18 @@
     Maps
 @endsection
 
+@section('css')
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <style>
+        #map {
+            width: 100%;
+            height: 400px;
+        }
+    </style>
+@endsection
+
 @section('main')
     <main class="main-content">
         <div class="position-relative iq-banner">
@@ -80,7 +92,7 @@
                             </div>
                             <div class="card-body">
                                 <p>Lihat titik daerah wajib pajak</p>
-                                <div class="map" style="width: 100%; height: 400px;"></div>
+                                <div id="map"></div>
                             </div>
                         </div>
                     </div>
@@ -102,40 +114,18 @@
         </footer>
         <!-- Footer Section End -->
     </main>
-
-    <script type="module">
-        import '/node_modules/ol/ol.css';
-        import { Map, View } from '/node_modules/ol';
-        import TileLayer from '/node_modules/ol/layer/Tile';
-        import OSM from '/node_modules/ol/source/OSM';
-
-         // Inisialisasi peta menggunakan OpenLayers
-         const map = new ol.Map({
-            target: 'map',
-            layers: [
-                new ol.layer.Tile({
-                    source: new ol.source.OSM()
-                })
-            ],
-            view: new ol.View({
-                center: ol.proj.fromLonLat([106.816666, -6.200000]), // Lokasi Jakarta
-                zoom: 12
-            })
-        });
-
-        // Menambahkan marker pada peta
-        var marker = new ol.Feature({
-            geometry: new ol.geom.Point(ol.proj.fromLonLat([106.816666, -6.200000]))
-        });
-
-        var vectorSource = new ol.source.Vector({
-            features: [marker]
-        });
-
-        var markerLayer = new ol.layer.Vector({
-            source: vectorSource
-        });
-
-        map.addLayer(markerLayer);
-    </script>
 @endsection
+
+@push('javascript')
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <script>
+        const map = L.map('map').setView([-6.238538333493857, 106.96598623264543], 10);
+
+        const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+    </script>
+@endpush
