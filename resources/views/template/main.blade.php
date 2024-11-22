@@ -31,10 +31,14 @@
     <!-- RTL Css -->
     <link rel="stylesheet" href="{{ asset('assets/css/rtl.min.css')}}" /> 
 
+    <!-- Script SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     @yield('css')
 </head>
 
 <body class="  ">
+    @include('sweetalert::alert')
     <!-- loader Start -->
     <div id="loading">
         <div class="loader simple-loader">
@@ -95,7 +99,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">
+                        <a class="nav-link {{Request::is('/') ? 'active' : ''}}" aria-current="page" href="/">
                             <i class="icon">
                                 <svg width="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg" class="icon-20">
@@ -120,7 +124,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{route('maps')}}">
+                        <a class="nav-link {{Request::is('maps') ? 'active' : ''}}" aria-current="page" href="{{route('maps')}}">
                             <i class="icon">
                                 <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">

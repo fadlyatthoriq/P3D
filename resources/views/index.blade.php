@@ -48,13 +48,21 @@
                                     <img src="{{ asset('assets/images/avatars/avtar_3.png') }}" alt="User-Profile"
                                         class="theme-color-pink-img img-fluid avatar avatar-50 avatar-rounded" />
                                     <div class="caption ms-3 d-none d-md-block">
-                                        <h6 class="mb-0 caption-title">Fadly Atthoriq</h6>
+                                        <h6 class="mb-0 caption-title">{{Auth::user()->name}}</h6>
                                         <p class="mb-0 caption-sub-title">Kepala Perpajakan</p>
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <li>
-                                        <a class="dropdown-item" href="#">Logout</a>
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                
+                                            <a class="dropdown-item" href="route('logout')"
+                                                    onclick="event.preventDefault();
+                                                                this.closest('form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+                                        </form>
                                     </li>
                                 </ul>
                             </li>

@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,19 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-route::get('/', [HomeController::class, 'index'])->name('index');
-route::get('/maps', [HomeController::class, 'map'])->name('maps');
+route::middleware('auth', 'verified')->group(function () {
+    route::get('/', [IndexController::class, 'index'])->name('index');
+    route::get('/maps', [IndexController::class, 'map'])->name('maps');
+});
+
+route::get('/logins', function(){
+    return view('auth.logins');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
