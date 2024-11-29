@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 route::middleware('auth', 'verified')->group(function () {
-    route::resource('/', IndexController::class);
+    route::resource('index', IndexController::class);
+    route::get('/',[IndexController::class, 'index'])->name('index');
     route::get('/maps', [MapController::class, 'index'])->name('maps');
 });
 

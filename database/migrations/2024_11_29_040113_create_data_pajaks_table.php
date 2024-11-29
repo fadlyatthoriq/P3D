@@ -17,14 +17,14 @@ return new class extends Migration
             $table->string('namausaha');
             $table->string('jenisusaha');
             $table->text('alamatusaha');
-            $table->mediumInteger('teleponusaha');
+            $table->string('teleponusaha');
             $table->string('jenispendapatan');
             $table->date('tanggalpendaftaran');
             $table->string('namapemilik');
-            $table->mediumInteger('nikpemilik');
+            $table->string('nikpemilik');
             $table->string('jabatanpemilik');
             $table->text('alamatpemilik');
-            $table->mediumInteger('teleponpemilik');
+            $table->string('teleponpemilik');
             $table->timestamps();
         });
     }

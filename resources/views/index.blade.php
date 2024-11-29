@@ -206,8 +206,10 @@
                                                             aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action={{ route('store') }} method="POST">
+                                                        <form action="{{ route('index.store') }}" method="POST">
+                                                            
                                                             @csrf
+
                                                             <div class="form-group">
                                                                 <label for="npwpd" class="form-label">NPWPD</label>
                                                                 <input type="text" class="form-control" name="npwpd" id="npwpd"
@@ -217,6 +219,16 @@
                                                                 <label for="namausaha" class="form-label">Nama Usaha</label>
                                                                 <input type="text" class="form-control" name="namausaha" id="namausaha"
                                                                     aria-describedby="namausaha" placeholder="Nama Usaha" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="jenisusaha" class="form-label">Jenis Usaha</label>
+                                                                <input type="text" class="form-control" name="jenisusaha" id="jenisusaha"
+                                                                    aria-describedby="jenisusaha" placeholder="Jenis Usaha" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="alamatusaha" class="form-label">Alamat Usaha</label>
+                                                                <textarea class="form-control" name="alamatusaha" id="alamatusaha"
+                                                                    aria-describedby="alamatusaha" placeholder="Alamat Pemilik" required></textarea>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="jenispendapatan" class="form-label">Jenis Pendapatan</label>
@@ -234,13 +246,13 @@
                                                                     <option value="lainnya">Lainnya</option>
                                                                 </select>
                                                             </div>
-                                                            <div class="form-group">
+                                                            {{-- <div class="form-group">
                                                                 <label for="" class="mb-3">Alamat Usaha</label>
                                                                 <input type="text" class="form-control mb-1" name="latitude" id="latitude" 
                                                                     aria-describedby="latitude" placeholder="Latitude (Filled Automatically)" readonly required>
                                                                 <input type="text" class="form-control mt-1" name="longtitude" id="longtitude" 
                                                                     aria-describedby="longtitude" placeholder="Longtitude (Filled Automatically)" readonly required>
-                                                            </div>
+                                                            </div> --}}
                                                             <div class="form-group">
                                                                 <label for="teleponusaha" class="form-label">Telepon Usaha</label>
                                                                 <input type="number" class="form-control" name="teleponusaha" id="teleponusaha"
@@ -277,9 +289,8 @@
                                                                     aria-describedby="teleponpemilik" placeholder="No Telp Pemilik" required>
                                                             </div>
                                                             <div class="text-start mt-2">
-                                                                <button type="button" class="btn btn-primary"
-                                                                    data-bs-dismiss="modal">Save</button>
-                                                                <button type="button" class="btn btn-danger">Cancel</button>
+                                                                <button type="submit" class="btn btn-primary">Save</button>
+                                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
                                                             </div>
                                                         </form>
                                                     </div>
