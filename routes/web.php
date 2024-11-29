@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\MapController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 route::middleware('auth', 'verified')->group(function () {
-    route::get('/', [IndexController::class, 'index'])->name('index');
-    route::get('/maps', [IndexController::class, 'map'])->name('maps');
+    route::resource('/', IndexController::class);
+    route::get('/maps', [MapController::class, 'index'])->name('maps');
 });
 
 route::get('/logins', function(){

@@ -77,7 +77,7 @@
                         <div class="col-md-12">
                             <div class="flex-wrap d-flex justify-content-between align-items-center">
                                 <div>
-                                    <h1>Hello Fadly Atthoriq!</h1>
+                                    <h1>Hello! {{Auth::user()->name}}</h1>
                                     <p>Integrated Tax Information System</p>
                                 </div>
                             </div>
@@ -206,7 +206,7 @@
                                                             aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="">
+                                                        <form action={{ route('store') }} method="POST">
                                                             @csrf
                                                             <div class="form-group">
                                                                 <label for="npwpd" class="form-label">NPWPD</label>
@@ -220,8 +220,19 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="jenispendapatan" class="form-label">Jenis Pendapatan</label>
-                                                                <input type="text" class="form-control" name="jenispendapatan" id="jenispendapatan"
-                                                                    aria-describedby="jenispendapatan" placeholder="Jenis Pendapatan" required>
+                                                                <select name="jenispendapatan" id="jenispendapatan" class="form-control" required>
+                                                                    <option value="" disabled selected>Pilih Jenis Pendapatan</option>
+                                                                    <option value="penggantianatauimbalan">Penggantian atau Imbalan</option>
+                                                                    <option value="hadiah">Hadiah</option>
+                                                                    <option value="labausaha">Laba Usaha</option>
+                                                                    <option value="keuntunganpenjualan">Keuntungan Penjualan</option>
+                                                                    <option value="penerimaankembali">Penerimaan Kembali</option>
+                                                                    <option value="bunga">Bunga</option>
+                                                                    <option value="dividen">Dividen</option>
+                                                                    <option value="royalti">Royalti</option>
+                                                                    <option value="sewa">Sewa</option>
+                                                                    <option value="lainnya">Lainnya</option>
+                                                                </select>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="" class="mb-3">Alamat Usaha</label>
@@ -229,6 +240,41 @@
                                                                     aria-describedby="latitude" placeholder="Latitude (Filled Automatically)" readonly required>
                                                                 <input type="text" class="form-control mt-1" name="longtitude" id="longtitude" 
                                                                     aria-describedby="longtitude" placeholder="Longtitude (Filled Automatically)" readonly required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="teleponusaha" class="form-label">Telepon Usaha</label>
+                                                                <input type="number" class="form-control" name="teleponusaha" id="teleponusaha"
+                                                                    aria-describedby="teleponusaha" placeholder="No Telp Usaha" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="tanggalpendaftaran" class="form-label">Tanggal Pendaftaran</label>
+                                                                <input type="date" class="form-control" name="tanggalpendaftaran" id="tanggalpendaftaran"
+                                                                    aria-describedby="tanggalpendaftaran" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="namapemilik" class="form-label">Nama Pemilik</label>
+                                                                <input type="text" class="form-control" name="namapemilik" id="namapemilik"
+                                                                    aria-describedby="namapemilik" placeholder="Nama Pemilik" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="nikpemilik" class="form-label">NIK Pemilik</label>
+                                                                <input type="number" class="form-control" name="nikpemilik" id="nikpemilik"
+                                                                    aria-describedby="nikpemilik" placeholder="NIK Pemilik" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="jabatanpemilik" class="form-label">Jabatan Pemilik</label>
+                                                                <input type="text" class="form-control" name="jabatanpemilik" id="jabatanpemilik"
+                                                                    aria-describedby="jabatanpemilik" placeholder="Jabatan Pemilik" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="alamatpemilik" class="form-label">Alamat Pemilik</label>
+                                                                <textarea class="form-control" name="alamatpemilik" id="alamatpemilik"
+                                                                    aria-describedby="alamatpemilik" placeholder="Alamat Pemilik" required></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="teleponpemilik" class="form-label">Telepon Pemilik</label>
+                                                                <input type="text" class="form-control" name="teleponpemilik" id="teleponpemilik"
+                                                                    aria-describedby="teleponpemilik" placeholder="No Telp Pemilik" required>
                                                             </div>
                                                             <div class="text-start mt-2">
                                                                 <button type="button" class="btn btn-primary"
@@ -255,22 +301,13 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                @forelse ($data as $d)
                                                 <tr>
-                                                    <td>Fadly Atthoriq</td>
-                                                    <td>System Architect</td>
-                                                    <td>Edinburgh</td>
-                                                    <td class="text-truncate" style="max-width: 180px;">Lorem ipsum dolor
-                                                        sit amet, consectetur adipisicing elit. Deleniti in sint aliquid eos
-                                                        commodi, natus excepturi delectus dicta illo voluptates est. Nulla
-                                                        alias deserunt veritatis quasi qui nostrum magni, pariatur
-                                                        consequatur, nemo accusamus ducimus ut officiis, nam vel nesciunt.
-                                                        Excepturi autem aliquid, qui nulla consequuntur velit nesciunt
-                                                        voluptas quaerat, incidunt illo recusandae placeat. Facilis totam
-                                                        libero harum placeat aspernatur tenetur, ab non ipsam aperiam
-                                                        corrupti quibusdam officiis id dolorem delectus accusamus incidunt
-                                                        esse ad quia saepe quis magni et at dolor soluta. Veritatis
-                                                        voluptates dolorem maiores minima harum odit nihil explicabo hic,
-                                                        itaque recusandae quidem libero inventore architecto sequi unde!
+                                                    <td>{{$d->npwpd}}</td>
+                                                    <td>{{$d->namausaha}}</td>
+                                                    <td>{{$d->jenisusaha}}</td>
+                                                    <td class="text-truncate" style="max-width: 180px;">
+                                                        {{$d->alamatusaha}}
                                                     </td>
                                                     <td>
                                                         <div style="float: left;">
@@ -326,6 +363,9 @@
                                                         </div>
                                                     </td>
                                                 </tr>
+                                                @empty
+
+                                                @endforelse
                                             </tbody>
                                             <tfoot>
                                                 <tr>
