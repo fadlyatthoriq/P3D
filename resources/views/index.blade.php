@@ -6,102 +6,6 @@
 
 @section('main')
     <main class="main-content">
-        <div class="position-relative iq-banner">
-            <!--Nav Start-->
-            <nav class="nav navbar navbar-expand-lg navbar-light iq-navbar">
-                <div class="container-fluid navbar-inner">
-                    <a href="../dashboard/index.html" class="navbar-brand">
-                        <h4 class="logo-title">SIPANDU</h4>
-                    </a>
-                    <div class="sidebar-toggle" data-toggle="sidebar" data-active="true">
-                        <i class="icon">
-                            <svg width="20px" class="icon-20" viewBox="0 0 24 24">
-                                <path fill="currentColor"
-                                    d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" />
-                            </svg>
-                        </i>
-                    </div>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon">
-                            <span class="mt-2 navbar-toggler-bar bar1"></span>
-                            <span class="navbar-toggler-bar bar2"></span>
-                            <span class="navbar-toggler-bar bar3"></span>
-                        </span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="mb-2 navbar-nav ms-auto align-items-center navbar-list mb-lg-0">
-                            <li class="nav-item dropdown">
-                                <a class="py-0 nav-link d-flex align-items-center" href="#" id="navbarDropdown"
-                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="{{ asset('assets/images/avatars/01.png') }}" alt="User-Profile"
-                                        class="theme-color-default-img img-fluid avatar avatar-50 avatar-rounded" />
-                                    <img src="{{ asset('assets/images/avatars/avtar_1.png') }}" alt="User-Profile"
-                                        class="theme-color-purple-img img-fluid avatar avatar-50 avatar-rounded" />
-                                    <img src="{{ asset('assets/images/avatars/avtar_2.png') }}" alt="User-Profile"
-                                        class="theme-color-blue-img img-fluid avatar avatar-50 avatar-rounded" />
-                                    <img src="{{ asset('assets/images/avatars/avtar_4.png') }}" alt="User-Profile"
-                                        class="theme-color-green-img img-fluid avatar avatar-50 avatar-rounded" />
-                                    <img src="{{ asset('assets/images/avatars/avtar_5.png') }}" alt="User-Profile"
-                                        class="theme-color-yellow-img img-fluid avatar avatar-50 avatar-rounded" />
-                                    <img src="{{ asset('assets/images/avatars/avtar_3.png') }}" alt="User-Profile"
-                                        class="theme-color-pink-img img-fluid avatar avatar-50 avatar-rounded" />
-                                    <div class="caption ms-3 d-none d-md-block">
-                                        <h6 class="mb-0 caption-title">{{Auth::user()->name}}</h6>
-                                        <p class="mb-0 caption-sub-title">Kepala Perpajakan</p>
-                                    </div>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <li>
-                                        <form method="POST" action="{{ route('logout') }}">
-                                            @csrf
-                
-                                            <a class="dropdown-item" href="route('logout')"
-                                                    onclick="event.preventDefault();
-                                                                this.closest('form').submit();">
-                                                {{ __('Logout') }}
-                                            </a>
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            <!-- Nav Header Component Start -->
-            <div class="iq-navbar-header" style="height: 215px">
-                <div class="container-fluid iq-container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="flex-wrap d-flex justify-content-between align-items-center">
-                                <div>
-                                    <h1>Hello! {{Auth::user()->name}}</h1>
-                                    <p>Integrated Tax Information System</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="iq-header-img">
-                    <img src="{{ asset('assets/images/dashboard/top-header.png') }}" alt="header"
-                        class="theme-color-default-img img-fluid w-100 h-100 animated-scaleX" />
-                    <img src="{{ asset('assets/images/dashboard/top-header1.png') }}" alt="header"
-                        class="theme-color-purple-img img-fluid w-100 h-100 animated-scaleX" />
-                    <img src="{{ asset('assets/images/dashboard/top-header2.png') }}" alt="header"
-                        class="theme-color-blue-img img-fluid w-100 h-100 animated-scaleX" />
-                    <img src="{{ asset('assets/images/dashboard/top-header3.png') }}" alt="header"
-                        class="theme-color-green-img img-fluid w-100 h-100 animated-scaleX" />
-                    <img src="{{ asset('assets/images/dashboard/top-header4.png') }}" alt="header"
-                        class="theme-color-yellow-img img-fluid w-100 h-100 animated-scaleX" />
-                    <img src="{{ asset('assets/images/dashboard/top-header5.png') }}" alt="header"
-                        class="theme-color-pink-img img-fluid w-100 h-100 animated-scaleX" />
-                </div>
-            </div>
-            <!-- Nav Header Component End -->
-            <!--Nav End-->
-        </div>
         <div class="container-fluid content-inner mt-n5 py-0">
             <div class="row">
                 <div class="col-md-12 col-lg-12">
@@ -195,108 +99,7 @@
                                             </i>
                                             <span>Tambah Data</span>
                                         </a>
-                                        <div class="modal fade" id="staticBackdrop-1" data-bs-backdrop="static"
-                                            data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                            aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="staticBackdropLabel">Add new role</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form action="{{ route('index.store') }}" method="POST">
-                                                            
-                                                            @csrf
-
-                                                            <div class="form-group">
-                                                                <label for="npwpd" class="form-label">NPWPD</label>
-                                                                <input type="text" class="form-control" name="npwpd" id="npwpd"
-                                                                    aria-describedby="NPWPD" placeholder="NPWPD" required>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="namausaha" class="form-label">Nama Usaha</label>
-                                                                <input type="text" class="form-control" name="namausaha" id="namausaha"
-                                                                    aria-describedby="namausaha" placeholder="Nama Usaha" required>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="jenisusaha" class="form-label">Jenis Usaha</label>
-                                                                <input type="text" class="form-control" name="jenisusaha" id="jenisusaha"
-                                                                    aria-describedby="jenisusaha" placeholder="Jenis Usaha" required>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="alamatusaha" class="form-label">Alamat Usaha</label>
-                                                                <textarea class="form-control" name="alamatusaha" id="alamatusaha"
-                                                                    aria-describedby="alamatusaha" placeholder="Alamat Pemilik" required></textarea>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="jenispendapatan" class="form-label">Jenis Pendapatan</label>
-                                                                <select name="jenispendapatan" id="jenispendapatan" class="form-control" required>
-                                                                    <option value="" disabled selected>Pilih Jenis Pendapatan</option>
-                                                                    <option value="penggantianatauimbalan">Penggantian atau Imbalan</option>
-                                                                    <option value="hadiah">Hadiah</option>
-                                                                    <option value="labausaha">Laba Usaha</option>
-                                                                    <option value="keuntunganpenjualan">Keuntungan Penjualan</option>
-                                                                    <option value="penerimaankembali">Penerimaan Kembali</option>
-                                                                    <option value="bunga">Bunga</option>
-                                                                    <option value="dividen">Dividen</option>
-                                                                    <option value="royalti">Royalti</option>
-                                                                    <option value="sewa">Sewa</option>
-                                                                    <option value="lainnya">Lainnya</option>
-                                                                </select>
-                                                            </div>
-                                                            {{-- <div class="form-group">
-                                                                <label for="" class="mb-3">Alamat Usaha</label>
-                                                                <input type="text" class="form-control mb-1" name="latitude" id="latitude" 
-                                                                    aria-describedby="latitude" placeholder="Latitude (Filled Automatically)" readonly required>
-                                                                <input type="text" class="form-control mt-1" name="longtitude" id="longtitude" 
-                                                                    aria-describedby="longtitude" placeholder="Longtitude (Filled Automatically)" readonly required>
-                                                            </div> --}}
-                                                            <div class="form-group">
-                                                                <label for="teleponusaha" class="form-label">Telepon Usaha</label>
-                                                                <input type="number" class="form-control" name="teleponusaha" id="teleponusaha"
-                                                                    aria-describedby="teleponusaha" placeholder="No Telp Usaha" required>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="tanggalpendaftaran" class="form-label">Tanggal Pendaftaran</label>
-                                                                <input type="date" class="form-control" name="tanggalpendaftaran" id="tanggalpendaftaran"
-                                                                    aria-describedby="tanggalpendaftaran" required>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="namapemilik" class="form-label">Nama Pemilik</label>
-                                                                <input type="text" class="form-control" name="namapemilik" id="namapemilik"
-                                                                    aria-describedby="namapemilik" placeholder="Nama Pemilik" required>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="nikpemilik" class="form-label">NIK Pemilik</label>
-                                                                <input type="number" class="form-control" name="nikpemilik" id="nikpemilik"
-                                                                    aria-describedby="nikpemilik" placeholder="NIK Pemilik" required>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="jabatanpemilik" class="form-label">Jabatan Pemilik</label>
-                                                                <input type="text" class="form-control" name="jabatanpemilik" id="jabatanpemilik"
-                                                                    aria-describedby="jabatanpemilik" placeholder="Jabatan Pemilik" required>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="alamatpemilik" class="form-label">Alamat Pemilik</label>
-                                                                <textarea class="form-control" name="alamatpemilik" id="alamatpemilik"
-                                                                    aria-describedby="alamatpemilik" placeholder="Alamat Pemilik" required></textarea>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="teleponpemilik" class="form-label">Telepon Pemilik</label>
-                                                                <input type="text" class="form-control" name="teleponpemilik" id="teleponpemilik"
-                                                                    aria-describedby="teleponpemilik" placeholder="No Telp Pemilik" required>
-                                                            </div>
-                                                            <div class="text-start mt-2">
-                                                                <button type="submit" class="btn btn-primary">Save</button>
-                                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @include('components.modal-tambah')
                                     </div>
                                 </div>
                                 <div class="card-body">
@@ -304,6 +107,7 @@
                                         <table id="datatable" class="table table-striped" data-toggle="data-table">
                                             <thead>
                                                 <tr>
+                                                    <th>No.</th>
                                                     <th>NPWPD</th>
                                                     <th>Nama Usaha</th>
                                                     <th>Jenis Pendapatan</th>
@@ -314,18 +118,18 @@
                                             <tbody>
                                                 @forelse ($data as $d)
                                                 <tr>
+                                                    <td>{{$loop->iteration}}</td>
                                                     <td>{{$d->npwpd}}</td>
                                                     <td>{{$d->namausaha}}</td>
-                                                    <td>{{$d->jenisusaha}}</td>
+                                                    <td>{{$d->jenispendapatan}}</td>
                                                     <td class="text-truncate" style="max-width: 180px;">
                                                         {{$d->alamatusaha}}
                                                     </td>
                                                     <td>
                                                         <div style="float: left;">
-                                                            <a class="btn btn-sm btn-icon text-primary flex-end"
-                                                                data-bs-toggle="tooltip" title="Edit Data"
-                                                                href="#">
-                                                                <span class="btn-inner">
+                                                            <button type="button" class="btn btn-sm btn-icon text-primary flex-end"
+                                                                data-bs-toggle="modal" data-bs-target="#modalUpdate{{ $d->id }}">
+                                                                <span class="btn-inner" data-bs-toggle="tooltip" title="Edit Data">
                                                                     <svg class="icon-20" width="20"
                                                                         viewBox="0 0 24 24" fill="none"
                                                                         xmlns="http://www.w3.org/2000/svg">
@@ -345,32 +149,36 @@
                                                                             stroke-linejoin="round"></path>
                                                                     </svg>
                                                                 </span>
-                                                            </a>
-                                                            <a class="btn btn-sm btn-icon text-danger "
-                                                                data-bs-toggle="tooltip" title="Delete Data"
-                                                                href="#">
-                                                                <span class="btn-inner">
-                                                                    <svg class="icon-20" width="20"
-                                                                        viewBox="0 0 24 24" fill="none"
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        stroke="currentColor">
-                                                                        <path
-                                                                            d="M19.3248 9.46826C19.3248 9.46826 18.7818 16.2033 18.4668 19.0403C18.3168 20.3953 17.4798 21.1893 16.1088 21.2143C13.4998 21.2613 10.8878 21.2643 8.27979 21.2093C6.96079 21.1823 6.13779 20.3783 5.99079 19.0473C5.67379 16.1853 5.13379 9.46826 5.13379 9.46826"
-                                                                            stroke="currentColor" stroke-width="1.5"
-                                                                            stroke-linecap="round"
-                                                                            stroke-linejoin="round"></path>
-                                                                        <path d="M20.708 6.23975H3.75"
-                                                                            stroke="currentColor" stroke-width="1.5"
-                                                                            stroke-linecap="round"
-                                                                            stroke-linejoin="round"></path>
-                                                                        <path
-                                                                            d="M17.4406 6.23973C16.6556 6.23973 15.9796 5.68473 15.8256 4.91573L15.5826 3.69973C15.4326 3.13873 14.9246 2.75073 14.3456 2.75073H10.1126C9.53358 2.75073 9.02558 3.13873 8.87558 3.69973L8.63258 4.91573C8.47858 5.68473 7.80258 6.23973 7.01758 6.23973"
-                                                                            stroke="currentColor" stroke-width="1.5"
-                                                                            stroke-linecap="round"
-                                                                            stroke-linejoin="round"></path>
-                                                                    </svg>
-                                                                </span>
-                                                            </a>
+                                                            </button>
+                                                            @include('components.modal-edit')
+                                                            <form action="{{ route('data-pajak.destroy', $d->id) }}" method="POST" class="deletedata">
+                                                                @csrf
+                                                                @method('DELETE')
+
+                                                                <button type="submit" class="btn btn-sm btn-icon text-danger" data-bs-toggle="tooltip" title="Delete Data">
+                                                                    <span class="btn-inner">
+                                                                        <svg class="icon-20" width="20"
+                                                                            viewBox="0 0 24 24" fill="none"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            stroke="currentColor">
+                                                                            <path
+                                                                                d="M19.3248 9.46826C19.3248 9.46826 18.7818 16.2033 18.4668 19.0403C18.3168 20.3953 17.4798 21.1893 16.1088 21.2143C13.4998 21.2613 10.8878 21.2643 8.27979 21.2093C6.96079 21.1823 6.13779 20.3783 5.99079 19.0473C5.67379 16.1853 5.13379 9.46826 5.13379 9.46826"
+                                                                                stroke="currentColor" stroke-width="1.5"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round"></path>
+                                                                            <path d="M20.708 6.23975H3.75"
+                                                                                stroke="currentColor" stroke-width="1.5"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round"></path>
+                                                                            <path
+                                                                                d="M17.4406 6.23973C16.6556 6.23973 15.9796 5.68473 15.8256 4.91573L15.5826 3.69973C15.4326 3.13873 14.9246 2.75073 14.3456 2.75073H10.1126C9.53358 2.75073 9.02558 3.13873 8.87558 3.69973L8.63258 4.91573C8.47858 5.68473 7.80258 6.23973 7.01758 6.23973"
+                                                                                stroke="currentColor" stroke-width="1.5"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round"></path>
+                                                                        </svg>
+                                                                    </span>
+                                                                </button>
+                                                            </form>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -396,19 +204,16 @@
                 </div>
             </div>
         </div>
-        <!-- Footer Section Start -->
-        <footer class="footer">
-            <div class="footer-body">
-                <ul class="left-panel list-inline mb-0 p-0"></ul>
-                <div class="right-panel">
-                    ©
-                    <script>
-                        document.write(new Date().getFullYear());
-                    </script>
-                    SIPANDU by <a href="#">Fadly Atthoriq</a>.
-                </div>
-            </div>
-        </footer>
-        <!-- Footer Section End -->
     </main>
+
+    <script>
+        // Menambahkan event listener untuk setiap form dengan class .delete-form
+        document.querySelectorAll('.deletedata').forEach(function(form) {
+            form.addEventListener('submit', function(e) {
+                if (!confirm('Yakin ingin menghapus data ini?')) {
+                    e.preventDefault();  // Membatalkan pengiriman form jika konfirmasi ditolak
+                }
+            });
+        });
+    </script>
 @endsection

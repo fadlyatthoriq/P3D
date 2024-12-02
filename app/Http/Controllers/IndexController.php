@@ -72,4 +72,48 @@ class IndexController extends Controller
         Alert::success('Success', 'Berhasil Menambahkan data!');
         return redirect()->route('index');
     }
+
+    /**
+     * update
+     *
+     * @param  mixed $request
+     * @param  mixed $id
+     * @return RedirectResponse
+     */
+    public function update(Request $request, $id): RedirectResponse
+    {
+        $request->validate([
+            'npwpd' => 'required|unique:data_pajaks,npwpd,' . $id,
+            'namausaha' => 'required',
+            'jenisusaha' => 'required',
+            'alamatusaha' => 'required',
+            'teleponusaha' => 'required|numeric',
+            'jenispendapatan' => 'required',
+            'tanggalpendaftaran' => 'required|date',
+            'namapemilik' => 'required',
+            'nikpemilik' => 'required|digits:16',
+            'jabatanpemilik' => 'required',
+            'alamatpemilik' => 'required',
+            'teleponpemilik' => 'required|digits_between:12,15|numeric',
+        ]);
+    
+        // Cari data berdasarkan ID
+        $data = DataPajak::findOrFail($id);
+    
+        // Update data
+        $data->update($request->all());
+    
+        // Berikan notifikasi sukses
+        Alert::success('Success', 'Berhasil Memperbarui data!');
+        return redirect()->route('index');
+    }
+
+    public function destroy($id)
+    {
+        $data = DataPajak::findOrFail($id); // Cari data berdasarkan ID
+        $data->delete(); // Hapus data
+
+        Alert::success('Success', 'Data berhasil dihapus!');
+        return redirect()->route('index'); // Kembali ke halaman utama
+    }
 }
