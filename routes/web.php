@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\MapController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-route::middleware('auth', 'verified')->group(function () {
+route::middleware('auth', 'verified', 'role:Staff Lapangan')->group(function () {
     route::resource('index', IndexController::class);
     route::get('/',[IndexController::class, 'index'])->name('index');
     Route::put('/data-pajak/{id}', [IndexController::class, 'update'])->name('data-pajak.update');
@@ -28,10 +29,10 @@ route::get('/logins', function(){
     return view('auth.logins');
 });
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::middleware(['auth', 'role:Admin'])->group(function () {
+    Route::get('/users', [UserController::class, 'index'])->name('users.index'); // Menampilkan daftar user
+    Route::get('/users/create', [UserController::class, 'create'])->name('users.create'); // Menampilkan form tambah user
+    Route::post('/users', [UserController::class, 'store'])->name('users.store'); // Menyimpan user baru
 });
 
 require __DIR__.'/auth.php';

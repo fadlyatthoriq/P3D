@@ -7,12 +7,20 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Gate;
 use App\Models\User;
 use App\Models\DataPajak;
 use Alert;
 
 class IndexController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:view wajib pajak')->only(['index']);
+        $this->middleware('permission:manage wajib pajak')->only(['index', 'store', 'update', 'destroy']);
+    }
+
     /**
      * index
      *
@@ -21,11 +29,16 @@ class IndexController extends Controller
 
     public function index(User $id): View
     {
+        if (Gate::denies('view wajib pajak')) {
+            abort(403);
+        }
 
-        $users = User::where('id', Auth::user()->id)->get();
+        
+        $users = Auth::user();
         $data = DataPajak::latest()->paginate(10);
+        $roles = $users->getRoleNames();
 
-        return view('index', compact('users', 'data'));
+        return view('index', compact('users', 'data', 'roles'));
     }
 
     /**
