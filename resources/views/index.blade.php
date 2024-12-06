@@ -29,7 +29,7 @@
                                             </div>
                                             <div class="progress-detail">
                                                 <p class="mb-2">Total Data Wajib Pajak </p>
-                                                <h4 class="counter">1</h4>
+                                                <h4 class="counter">{{$totalwajibpajak}}</h4>
                                             </div>
                                         </div>
                                     </div>
@@ -86,6 +86,7 @@
                                     <div class="header-title">
                                         <h4 class="card-title">Data Wajib Pajak</h4>
                                     </div>
+                                    @can('manage wajib pajak')
                                     <div class="">
                                         <a href="#"
                                             class=" text-center btn btn-primary btn-icon mt-lg-0 mt-md-0 mt-3"
@@ -101,13 +102,14 @@
                                         </a>
                                         @include('components.modal-tambah')
                                     </div>
+                                    @endcan
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table id="datatable" class="table table-striped" data-toggle="data-table">
                                             <thead>
                                                 <tr>
-                                                    <th>No.</th>
+                                                    <th>#</th>
                                                     <th>NPWPD</th>
                                                     <th>Nama Usaha</th>
                                                     <th>Jenis Pendapatan</th>
@@ -192,11 +194,15 @@
                                             </tbody>
                                             <tfoot>
                                                 <tr>
+                                                    <th>#</th>
                                                     <th>NPWPD</th>
                                                     <th>Nama Usaha</th>
                                                     <th>Jenis Pendapatan</th>
                                                     <th>Alamat Usaha</th>
-                                                    <th>Aksi</th>
+                                                    @can('manage wajib pajak')
+                                                        <th>Aksi</th>
+                                                    @endcan
+                                                    
                                                 </tr>
                                             </tfoot>
                                         </table>

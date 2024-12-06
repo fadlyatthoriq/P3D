@@ -383,6 +383,13 @@
         </div>
     </div>
 
+    <script>
+        const datepickers = document.querySelectorAll('.vanila-datepicker')
+            Array.from(datepickers, (elem) => {
+            new Datepicker(elem)
+            })
+    </script>
+
     <!-- Library Bundle Script -->
     <script src="{{ asset('assets/js/core/libs.min.js')}}"></script>
 

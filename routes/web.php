@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-route::middleware('auth', 'verified', 'role:Staff Lapangan')->group(function () {
+route::middleware('auth', 'verified')->group(function () {
     route::resource('index', IndexController::class);
     route::get('/',[IndexController::class, 'index'])->name('index');
     Route::put('/data-pajak/{id}', [IndexController::class, 'update'])->name('data-pajak.update');
@@ -33,6 +33,8 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/users', [UserController::class, 'index'])->name('users.index'); // Menampilkan daftar user
     Route::get('/users/create', [UserController::class, 'create'])->name('users.create'); // Menampilkan form tambah user
     Route::post('/users', [UserController::class, 'store'])->name('users.store'); // Menyimpan user baru
+    route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+    route::delete('users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 });
 
 require __DIR__.'/auth.php';

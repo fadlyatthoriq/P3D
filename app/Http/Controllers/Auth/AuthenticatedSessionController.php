@@ -30,9 +30,17 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        $user = Auth::user();
+
+        if ($user->hasRole('Admin')) {
+            return redirect()->route('users.index');
+        }else {
+            return redirect()->route('index');
+        }
+
         Alert::success('Success', 'Anda berhasil login.');
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()->intended();
     }
 
     /**

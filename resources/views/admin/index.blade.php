@@ -19,7 +19,7 @@
                                 <div class="">
                                     <a href="#"
                                         class=" text-center btn btn-primary btn-icon mt-lg-0 mt-md-0 mt-3"
-                                        data-bs-toggle="modal" data-bs-target="#staticBackdrop-1">
+                                        data-bs-toggle="modal" data-bs-target="#modaltambahuser">
                                         <i class="btn-inner">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                                 viewBox="0 0 24 24" stroke="currentColor">
@@ -29,7 +29,7 @@
                                         </i>
                                         <span>Tambah Data</span>
                                     </a>
-                                    @include('components.modal-tambah')
+                                    @include('components.modal-tambahuser')
                                 </div>
                             </div>
                             <div class="card-body">
@@ -55,7 +55,7 @@
                                                     <td>
                                                         <div style="float: left;">
                                                             <button type="button" class="btn btn-sm btn-icon text-primary flex-end"
-                                                                data-bs-toggle="modal" data-bs-target="#modalUpdate{{ $d->id }}">
+                                                                data-bs-toggle="modal" data-bs-target="#modaledituser{{ $d->id }}">
                                                                 <span class="btn-inner" data-bs-toggle="tooltip" title="Edit Data">
                                                                     <svg class="icon-20" width="20"
                                                                         viewBox="0 0 24 24" fill="none"
@@ -77,8 +77,8 @@
                                                                     </svg>
                                                                 </span>
                                                             </button>
-                                                            @include('components.modal-edit')
-                                                            <form action="{{ route('data-pajak.destroy', $d->id) }}" method="POST" class="deletedata">
+                                                            @include('components.modal-edituser')
+                                                            <form action="{{ route('users.destroy', $d->id) }}" method="POST" class="deletedata">
                                                                 @csrf
                                                                 @method('DELETE')
 

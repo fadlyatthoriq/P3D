@@ -61,7 +61,7 @@
                     </div>
                     <div class="form-group">
                         <label for="tanggalpendaftaran" class="form-label">Tanggal Pendaftaran</label>
-                        <input type="date" class="form-control" name="tanggalpendaftaran" id="tanggalpendaftaran"
+                        <input type="date" class="form-control vanila-datepicker" name="tanggalpendaftaran" id="tanggalpendaftaran"
                             aria-describedby="tanggalpendaftaran" required>
                     </div>
                     <div class="form-group">
