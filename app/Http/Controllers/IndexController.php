@@ -47,7 +47,8 @@ class IndexController extends Controller
             'npwpd' => 'required|unique:data_pajaks,npwpd',
             'namausaha' => 'required',
             'jenisusaha' => 'required',
-            'alamatusaha' => 'required',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
             'teleponusaha' => 'required|numeric',
             'jenispendapatan' => 'required',
             'tanggalpendaftaran' => 'required|date',
@@ -59,20 +60,7 @@ class IndexController extends Controller
         ]);
 
         // Buat data
-        DataPajak::create([
-            'npwpd' => $request->npwpd,
-            'namausaha' => $request->namausaha,
-            'jenisusaha' => $request->jenisusaha,
-            'alamatusaha' => $request->alamatusaha,
-            'teleponusaha' => $request->teleponusaha,
-            'jenispendapatan' => $request->jenispendapatan,
-            'tanggalpendaftaran' => $request->tanggalpendaftaran,
-            'namapemilik' => $request->namapemilik,
-            'nikpemilik' => $request->nikpemilik,
-            'jabatanpemilik' => $request->jabatanpemilik,
-            'alamatpemilik' => $request->alamatpemilik,
-            'teleponpemilik' => $request->teleponpemilik,
-        ]);
+        DataPajak::create($request->all());
 
         // Berikan notifikasi sukses
         Alert::success('Success', 'Berhasil Menambahkan data!');

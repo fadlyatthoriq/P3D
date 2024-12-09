@@ -12,6 +12,10 @@ class MapController extends Controller
      */
     public function index()
     {
+        if (auth()->user()->hasRole('Admin')) {
+            abort(403, 'Anda tidak memiliki akses ke halaman ini.');
+        }
+        
         $users = User::get();
 
         return view('maps', compact('users'));

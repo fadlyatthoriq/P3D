@@ -27,10 +27,18 @@
                             aria-describedby="jenisusaha" placeholder="Jenis Usaha" required>
                     </div>
                     <div class="form-group">
-                        <label for="alamatusaha" class="form-label">Alamat Usaha</label>
-                        <textarea class="form-control" name="alamatusaha" id="alamatusaha" aria-describedby="alamatusaha"
-                            placeholder="Alamat Pemilik" required></textarea>
+                        <label for="latitude" class="form-label">Latitude</label>
+                        <input type="text" class="form-control" name="latitude" id="latitude"
+                            aria-describedby="latitude" placeholder="Latitude" readonly>
                     </div>
+                    <div class="form-group">
+                        <label for="longitude" class="form-label">Longitude</label>
+                        <input type="text" class="form-control" name="longitude" id="longitude"
+                            aria-describedby="longitude" placeholder="Longitude" readonly>
+                    </div>
+
+                    <div id="map"></div>
+
                     <div class="form-group">
                         <label for="jenispendapatan" class="form-label">Jenis Pendapatan</label>
                         <select name="jenispendapatan" id="jenispendapatan" class="form-control" required>
@@ -61,8 +69,8 @@
                     </div>
                     <div class="form-group">
                         <label for="tanggalpendaftaran" class="form-label">Tanggal Pendaftaran</label>
-                        <input type="date" class="form-control vanila-datepicker" name="tanggalpendaftaran" id="tanggalpendaftaran"
-                            aria-describedby="tanggalpendaftaran" required>
+                        <input type="date" class="form-control vanila-datepicker" name="tanggalpendaftaran"
+                            id="tanggalpendaftaran" aria-describedby="tanggalpendaftaran" required>
                     </div>
                     <div class="form-group">
                         <label for="namapemilik" class="form-label">Nama Pemilik</label>
@@ -98,3 +106,34 @@
         </div>
     </div>
 </div>
+
+<script>
+    let map; // Variabel untuk menyimpan peta
+  let marker; // Variabel untuk menyimpan marker
+
+  // Ketika modal dibuka, inisialisasi peta
+  document.getElementById('#staticBackdrop-1').addEventListener('shown.bs.modal', function () {
+    if (!map) {
+      map = L.map('map').setView([-6.200000, 106.816666], 13); // Koordinat awal (Jakarta)
+      
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap'
+      }).addTo(map);
+
+      // Tambahkan marker
+      marker = L.marker([-6.200000, 106.816666], { draggable: true }).addTo(map);
+      
+      // Update posisi marker saat dipindahkan
+      marker.on('dragend', function (e) {
+        let latlng = e.target.getLatLng();
+        console.log(`Latitude: ${latlng.lat}, Longitude: ${latlng.lng}`);
+      });
+    }
+
+    // Refresh ukuran peta
+    setTimeout(() => {
+      map.invalidateSize();
+    }, 200);
+  });
+</script>

@@ -126,9 +126,6 @@
                                                     <td>{{$d->npwpd}}</td>
                                                     <td>{{$d->namausaha}}</td>
                                                     <td>{{$d->jenispendapatan}}</td>
-                                                    <td class="text-truncate" style="max-width: 180px;">
-                                                        {{$d->alamatusaha}}
-                                                    </td>
                                                     @can('manage wajib pajak')
                                                         <td>
                                                             <div style="float: left;">

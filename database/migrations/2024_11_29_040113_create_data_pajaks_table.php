@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('npwpd')->unique();
             $table->string('namausaha');
             $table->string('jenisusaha');
-            $table->text('alamatusaha');
+            $table->double('latitude', 15, 8);
+            $table->double('longitude', 15, 8);
             $table->string('teleponusaha');
             $table->string('jenispendapatan');
             $table->date('tanggalpendaftaran');

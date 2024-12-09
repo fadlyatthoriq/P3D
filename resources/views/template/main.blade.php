@@ -34,6 +34,9 @@
     <!-- Script SweetAlert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    {{-- Leaflet.js --}}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
     @yield('css')
 </head>
 
@@ -420,6 +423,9 @@
 
     <!-- App Script -->
     <script src="{{ asset('assets/js/hope-ui.js')}}" defer></script>
+
+    {{-- Leaflet.js --}}
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
     @stack('javascript')
 </body>

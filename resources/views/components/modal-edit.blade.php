@@ -28,9 +28,14 @@
                             aria-describedby="jenisusaha" placeholder="Jenis Usaha" value="{{$d->jenisusaha}}" required>
                     </div>
                     <div class="form-group">
-                        <label for="alamatusaha" class="form-label">Alamat Usaha</label>
-                        <textarea class="form-control" name="alamatusaha" id="alamatusaha" aria-describedby="alamatusaha"
-                            placeholder="Alamat Pemilik" required>{{old('alamatusaha', $d->alamatusaha)}}</textarea>
+                        <label for="latitude" class="form-label">Latitude</label>
+                        <input type="text" class="form-control" name="latitude" id="latitude" aria-describedby="latitude"
+                            placeholder="Latitude"  value="{{$d->latitude}}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="longitude" class="form-label">Longitude</label>
+                        <input type="text" class="form-control" name="longitude" id="longitude" aria-describedby="longitude"
+                            placeholder="Longitude" value="{{$d->longitude}}" readonly>
                     </div>
                     <div class="form-group">
                         <label for="jenispendapatan" class="form-label">Jenis Pendapatan</label>
