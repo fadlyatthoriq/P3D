@@ -37,7 +37,7 @@
                             aria-describedby="longitude" placeholder="Longitude" readonly>
                     </div>
 
-                    <div id="map"></div>
+                    <div id="map" style="height: 400px;"></div>
 
                     <div class="form-group">
                         <label for="jenispendapatan" class="form-label">Jenis Pendapatan</label>
@@ -98,7 +98,7 @@
                             aria-describedby="teleponpemilik" placeholder="No Telp Pemilik" required>
                     </div>
                     <div class="text-start mt-2">
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="submit" class="btn btn-primary btn-save-tambah">Save</button>
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
                     </div>
                 </form>
@@ -109,31 +109,50 @@
 
 <script>
     let map; // Variabel untuk menyimpan peta
-  let marker; // Variabel untuk menyimpan marker
+    let marker; // Variabel untuk menyimpan marker
 
-  // Ketika modal dibuka, inisialisasi peta
-  document.getElementById('#staticBackdrop-1').addEventListener('shown.bs.modal', function () {
-    if (!map) {
-      map = L.map('map').setView([-6.200000, 106.816666], 13); // Koordinat awal (Jakarta)
-      
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '© OpenStreetMap'
-      }).addTo(map);
+    // Ketika modal dibuka, inisialisasi peta
+    document.getElementById('staticBackdrop-1').addEventListener('shown.bs.modal', function() {
+        if (!map) {
+            map = L.map('map').setView([-6.200000, 106.816666], 13); // Koordinat awal (Jakarta)
 
-      // Tambahkan marker
-      marker = L.marker([-6.200000, 106.816666], { draggable: true }).addTo(map);
-      
-      // Update posisi marker saat dipindahkan
-      marker.on('dragend', function (e) {
-        let latlng = e.target.getLatLng();
-        console.log(`Latitude: ${latlng.lat}, Longitude: ${latlng.lng}`);
-      });
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '© OpenStreetMap'
+            }).addTo(map);
+
+            // Tambahkan marker
+            marker = L.marker([-6.200000, 106.816666], {
+                draggable: true
+            }).addTo(map);
+
+            // Isi input awal dengan posisi marker
+            updateLatLngInputs(marker.getLatLng());
+
+            // Update posisi marker dan input saat marker dipindahkan
+            marker.on('dragend', function(e) {
+                let latlng = e.target.getLatLng();
+                updateLatLngInputs(latlng);
+            });
+        }
+
+        // Refresh ukuran peta
+        setTimeout(() => {
+            map.invalidateSize();
+        }, 200);
+    });
+
+    // Fungsi untuk mengupdate input latitude dan longitude
+    function updateLatLngInputs(latlng) {
+        document.getElementById('latitude').value = latlng.lat.toFixed(6); // Membatasi ke 6 digit desimal
+        document.getElementById('longitude').value = latlng.lng.toFixed(6);
     }
 
-    // Refresh ukuran peta
-    setTimeout(() => {
-      map.invalidateSize();
-    }, 200);
-  });
+    document.querySelector('.btn-save-tambah').addEventListener('click', function() {
+        if (marker) {
+            let latlng = marker.getLatLng();
+            console.log(`Lokasi disimpan: Latitude: ${latlng.lat}, Longitude: ${latlng.lng}`);
+            // Anda bisa mengirim data ke server atau memasukkannya ke form
+        }
+    });
 </script>

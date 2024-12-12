@@ -29,14 +29,17 @@
                     </div>
                     <div class="form-group">
                         <label for="latitude" class="form-label">Latitude</label>
-                        <input type="text" class="form-control" name="latitude" id="latitude" aria-describedby="latitude"
+                        <input type="text" class="form-control" name="latitude" id="latitude{{ $d->id }}" aria-describedby="latitude"
                             placeholder="Latitude"  value="{{$d->latitude}}" readonly>
                     </div>
                     <div class="form-group">
                         <label for="longitude" class="form-label">Longitude</label>
-                        <input type="text" class="form-control" name="longitude" id="longitude" aria-describedby="longitude"
+                        <input type="text" class="form-control" name="longitude" id="longitude{{ $d->id }}" aria-describedby="longitude"
                             placeholder="Longitude" value="{{$d->longitude}}" readonly>
                     </div>
+
+                    <div id="map{{$d->id}}" style="height: 400px;"></div>
+
                     <div class="form-group">
                         <label for="jenispendapatan" class="form-label">Jenis Pendapatan</label>
                         <select name="jenispendapatan" id="jenispendapatan" class="form-control" required>
@@ -96,7 +99,7 @@
                             aria-describedby="teleponpemilik" placeholder="No Telp Pemilik" value="{{$d->teleponpemilik}}" required>
                     </div>
                     <div class="text-start mt-2">
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button type="submit" class="btn btn-primary btn-save-edit">Update</button>
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
                     </div>
                 </form>
@@ -104,3 +107,64 @@
         </div>
     </div>
 </div>
+
+<script>
+
+    // Fungsi untuk membuka modal form edit data
+    let maps = {}; // Variabel untuk menyimpan peta
+let markers = {}; // Variabel untuk menyimpan marker
+
+function openEditModal(id, lat, lng) {
+    // Update input latitude dan longitude
+    document.getElementById('latitude' + id).value = lat.toFixed(6);
+    document.getElementById('longitude' + id).value = lng.toFixed(6);
+
+    // Dapatkan modal dengan ID dinamis
+    const modal = new bootstrap.Modal(document.getElementById('modalUpdate' + id));
+    modal.show();
+
+    // Inisialisasi peta di dalam modal
+    const mapContainer = 'map' + id;
+    if (!maps[id]) {
+        maps[id] = L.map(mapContainer).setView([lat, lng], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
+        }).addTo(maps[id]);
+
+        // Tambahkan marker yang dapat digeser
+        markers[id] = L.marker([lat, lng], { draggable: true }).addTo(maps[id]);
+
+        // Event saat marker digeser
+        markers[id].on('dragend', function (e) {
+            const latlng = e.target.getLatLng();
+            updateLatLngInputs(id, latlng);
+        });
+    } else {
+        // Refresh peta dan marker jika sudah ada instance
+        maps[id].setView([lat, lng], 13);
+        markers[id].setLatLng([lat, lng]);
+    }
+
+    // Refresh ukuran peta
+    setTimeout(() => {
+        maps[id].invalidateSize();
+        console.log(`Peta dengan ID ${id} berhasil di-refresh.`);
+    }, 500);
+}
+
+function updateLatLngInputs(id, latlng) {
+    document.getElementById('latitude' + id).value = latlng.lat.toFixed(6);
+    document.getElementById('longitude' + id).value = latlng.lng.toFixed(6);
+}
+
+document.addEventListener('click', function (event) {
+    if (event.target.matches('.btn-save-edit')) {
+        const id = event.target.closest('.modal').getAttribute('id').replace('modalUpdate', '');
+        if (markers[id]) {
+            const latlng = markers[id].getLatLng();
+            console.log(`Lokasi disimpan: Latitude: ${latlng.lat}, Longitude: ${latlng.lng}`);
+        }
+    }
+});
+</script>

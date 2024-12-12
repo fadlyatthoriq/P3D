@@ -41,9 +41,6 @@
 @endsection
 
 @push('javascript')
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-
     <script>
         const map = L.map('map').setView([-6.231712496602681, 106.97971914236066], 12);
 
