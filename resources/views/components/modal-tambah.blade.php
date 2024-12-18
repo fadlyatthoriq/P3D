@@ -1,4 +1,4 @@
-<div class="modal fade" id="staticBackdrop-1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+<div class="modal modal-lg fade" id="staticBackdrop-1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -107,6 +107,7 @@
     </div>
 </div>
 
+@push('javascript')
 <script>
     let map; // Variabel untuk menyimpan peta
     let marker; // Variabel untuk menyimpan marker
@@ -122,12 +123,15 @@
             }).addTo(map);
 
             // Tambahkan marker
-            marker = L.marker([-6.200000, 106.816666], {
-                draggable: true
-            }).addTo(map);
+            marker = L.marker([-6.200000, 106.816666], { draggable: true }).addTo(map);
 
-            // Isi input awal dengan posisi marker
-            updateLatLngInputs(marker.getLatLng());
+            // Isi input awal dengan posisi marker setelah peta dan marker siap
+            setTimeout(function() {
+                if (marker) {
+                    let latlng = marker.getLatLng();
+                    updateLatLngInputs(latlng);
+                }
+            }, 300);
 
             // Update posisi marker dan input saat marker dipindahkan
             marker.on('dragend', function(e) {
@@ -136,7 +140,7 @@
             });
         }
 
-        // Refresh ukuran peta
+        // Refresh ukuran peta setelah modal terbuka
         setTimeout(() => {
             map.invalidateSize();
         }, 200);
@@ -144,15 +148,24 @@
 
     // Fungsi untuk mengupdate input latitude dan longitude
     function updateLatLngInputs(latlng) {
-        document.getElementById('latitude').value = latlng.lat.toFixed(6); // Membatasi ke 6 digit desimal
-        document.getElementById('longitude').value = latlng.lng.toFixed(6);
+        if (latlng && latlng.lat !== undefined && latlng.lng !== undefined) {
+            document.getElementById('latitude').value = latlng.lat.toFixed(6); // Membatasi ke 6 digit desimal
+            document.getElementById('longitude').value = latlng.lng.toFixed(6);
+        } else {
+            console.error("LatLng is undefined or invalid:", latlng);
+        }
     }
 
+    // Menyimpan lokasi saat tombol save diklik
     document.querySelector('.btn-save-tambah').addEventListener('click', function() {
         if (marker) {
             let latlng = marker.getLatLng();
-            console.log(`Lokasi disimpan: Latitude: ${latlng.lat}, Longitude: ${latlng.lng}`);
-            // Anda bisa mengirim data ke server atau memasukkannya ke form
+            if (latlng) {
+                console.log(`Lokasi disimpan: Latitude: ${latlng.lat}, Longitude: ${latlng.lng}`);
+            } else {
+                console.error("Marker latlng is undefined.");
+            }
         }
     });
 </script>
+@endpush

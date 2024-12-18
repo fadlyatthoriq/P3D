@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -8,36 +7,35 @@
     <title>SIPANDU | @yield('title')</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico')}}" />
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" />
+
+    <!-- Link CSS Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Library / Plugin Css Build -->
-    <link rel="stylesheet" href="{{ asset('assets/css/core/libs.min.css')}}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/core/libs.min.css') }}" />
 
     <!-- Aos Animation Css -->
-    <link rel="stylesheet" href="{{ asset('assets/vendor/aos/dist/aos.css')}}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/aos/dist/aos.css') }}" />
 
     <!-- Hope Ui Design System Css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/hope-ui.min.css?v=2.0.0')}}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/hope-ui.min.css?v=2.0.0') }}" />
 
     <!-- Custom Css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/custom.min.css?v=2.0.0')}}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.min.css?v=2.0.0') }}" />
 
     <!-- Dark Css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/dark.min.css')}}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/dark.min.css') }}" />
 
     <!-- Customizer Css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/customizer.min.css')}}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/customizer.min.css') }}" />
 
     <!-- RTL Css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/rtl.min.css')}}" /> 
-
-    <!-- Script SweetAlert -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="{{ asset('assets/css/rtl.min.css') }}" />
 
     {{-- Leaflet.js --}}
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-        crossorigin=""/>
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
     @yield('css')
 </head>
@@ -57,12 +55,12 @@
             <a href="/" class="navbar-brand">
                 <!--Logo start-->
                 <!--logo End-->
-    
+
                 <!--Logo start-->
                 <!-- <div class="logo-main">
             <div class="logo-normal">
               <img
-                src="{{ asset('assets/images/dashboard/image.png')}}"
+                src="{{ asset('assets/images/dashboard/image.png') }}"
                 alt=""
                 class="img-fluid"
                 width="80px"
@@ -70,7 +68,7 @@
             </div>
             <div class="logo-mini">
               <img
-                src="{{ asset('assets/images/dashboard/image.png')}}"
+                src="{{ asset('assets/images/dashboard/image.png') }}"
                 alt=""
                 class="img-fluid"
                 width="40px"
@@ -78,7 +76,7 @@
             </div>
           </div> -->
                 <!--logo End-->
-    
+
                 <h4 class="logo-title">SIPANDU</h4>
             </a>
             <div class="sidebar-toggle" data-toggle="sidebar" data-active="true">
@@ -101,7 +99,7 @@
         @yield('main')
         @include('partials.footer')
     </main>
-    
+
     <a class="btn btn-fixed-end btn-warning btn-icon btn-setting" data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasExample" role="button" aria-controls="offcanvasExample">
         <svg width="24" viewBox="0 0 24 24" class="animated-rotate icon-24" fill="none"
@@ -123,8 +121,7 @@
                     Settings
                 </h3>
             </div>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
-                aria-label="Close"></button>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body data-scrollbar">
             <div class="row">
@@ -227,19 +224,19 @@
                     <h5 class="mb-3 mt-4">Scheme Direction</h5>
                     <div class="d-grid gap-3 grid-cols-2 mb-4">
                         <div class="text-center">
-                            <img src="{{ asset('assets/images/settings/dark/01.png')}}" alt="ltr"
+                            <img src="{{ asset('assets/images/settings/dark/01.png') }}" alt="ltr"
                                 class="mode dark-img img-fluid btn-border p-0 flex-column active mb-2"
                                 data-setting="dir-mode" data-name="dir" data-value="ltr" />
-                            <img src="{{ asset('')}}assets/images/settings/light/01.png" alt="ltr"
+                            <img src="{{ asset('') }}assets/images/settings/light/01.png" alt="ltr"
                                 class="mode light-img img-fluid btn-border p-0 flex-column active mb-2"
                                 data-setting="dir-mode" data-name="dir" data-value="ltr" />
                             <span class="mt-2"> LTR </span>
                         </div>
                         <div class="text-center">
-                            <img src="{{ asset('assets/images/settings/dark/02.png')}}" alt=""
+                            <img src="{{ asset('assets/images/settings/dark/02.png') }}" alt=""
                                 class="mode dark-img img-fluid btn-border p-0 flex-column mb-2"
                                 data-setting="dir-mode" data-name="dir" data-value="rtl" />
-                            <img src="{{ asset('assets/images/settings/light/02.png')}}" alt=""
+                            <img src="{{ asset('assets/images/settings/light/02.png') }}" alt=""
                                 class="mode light-img img-fluid btn-border p-0 flex-column mb-2"
                                 data-setting="dir-mode" data-name="dir" data-value="rtl" />
                             <span class="mt-2"> RTL </span>
@@ -270,30 +267,30 @@
                     <h5 class="mt-4 mb-3">Sidebar Types</h5>
                     <div class="d-grid gap-3 grid-cols-3 mb-4">
                         <div class="text-center">
-                            <img src="{{ asset('assets/images/settings/dark/03.png')}}" alt="mini"
+                            <img src="{{ asset('assets/images/settings/dark/03.png') }}" alt="mini"
                                 class="mode dark-img img-fluid btn-border p-0 flex-column mb-2" data-setting="sidebar"
                                 data-name="sidebar-type" data-value="sidebar-mini" />
-                            <img src="{{ asset('assets/images/settings/light/03.png')}}" alt="mini"
+                            <img src="{{ asset('assets/images/settings/light/03.png') }}" alt="mini"
                                 class="mode light-img img-fluid btn-border p-0 flex-column mb-2"
                                 data-setting="sidebar" data-name="sidebar-type" data-value="sidebar-mini" />
                             <span class="mt-2">Mini</span>
                         </div>
                         <div class="text-center">
-                            <img src="{{ asset('assets/images/settings/dark/04.png')}}" alt="hover"
+                            <img src="{{ asset('assets/images/settings/dark/04.png') }}" alt="hover"
                                 class="mode dark-img img-fluid btn-border p-0 flex-column mb-2" data-setting="sidebar"
                                 data-name="sidebar-type" data-value="sidebar-hover"
                                 data-extra-value="sidebar-mini" />
-                            <img src="{{ asset('assets/images/settings/light/04.png')}}" alt="hover"
+                            <img src="{{ asset('assets/images/settings/light/04.png') }}" alt="hover"
                                 class="mode light-img img-fluid btn-border p-0 flex-column mb-2"
                                 data-setting="sidebar" data-name="sidebar-type" data-value="sidebar-hover"
                                 data-extra-value="sidebar-mini" />
                             <span class="mt-2">Hover</span>
                         </div>
                         <div class="text-center">
-                            <img src="{{ asset('assets/images/settings/dark/05.png')}}" alt="boxed"
+                            <img src="{{ asset('assets/images/settings/dark/05.png') }}" alt="boxed"
                                 class="mode dark-img img-fluid btn-border p-0 flex-column mb-2" data-setting="sidebar"
                                 data-name="sidebar-type" data-value="sidebar-boxed" />
-                            <img src="{{ asset('assets/images/settings/light/05.png')}}" alt="boxed"
+                            <img src="{{ asset('assets/images/settings/light/05.png') }}" alt="boxed"
                                 class="mode light-img img-fluid btn-border p-0 flex-column mb-2"
                                 data-setting="sidebar" data-name="sidebar-type" data-value="sidebar-boxed" />
                             <span class="mt-2">Boxed</span>
@@ -303,37 +300,37 @@
                     <h5 class="mt-4 mb-3">Sidebar Active Style</h5>
                     <div class="d-grid gap-3 grid-cols-2 mb-4">
                         <div class="text-center">
-                            <img src="{{ asset('assets/images/settings/dark/06.png')}}" alt="rounded-one-side"
+                            <img src="{{ asset('assets/images/settings/dark/06.png') }}" alt="rounded-one-side"
                                 class="mode dark-img img-fluid btn-border p-0 flex-column mb-2" data-setting="sidebar"
                                 data-name="sidebar-item" data-value="navs-rounded" />
-                            <img src="{{ asset('assets/images/settings/light/06.png')}}" alt="rounded-one-side"
+                            <img src="{{ asset('assets/images/settings/light/06.png') }}" alt="rounded-one-side"
                                 class="mode light-img img-fluid btn-border p-0 flex-column mb-2"
                                 data-setting="sidebar" data-name="sidebar-item" data-value="navs-rounded" />
                             <span class="mt-2">Rounded One Side</span>
                         </div>
                         <div class="text-center">
-                            <img src="{{ asset('assets/images/settings/dark/07.png')}}" alt="rounded-all"
+                            <img src="{{ asset('assets/images/settings/dark/07.png') }}" alt="rounded-all"
                                 class="mode dark-img img-fluid btn-border p-0 flex-column active mb-2"
                                 data-setting="sidebar" data-name="sidebar-item" data-value="navs-rounded-all" />
-                            <img src="{{ asset('assets/images/settings/light/07.png')}}" alt="rounded-all"
+                            <img src="{{ asset('assets/images/settings/light/07.png') }}" alt="rounded-all"
                                 class="mode light-img img-fluid btn-border p-0 flex-column active mb-2"
                                 data-setting="sidebar" data-name="sidebar-item" data-value="navs-rounded-all" />
                             <span class="mt-2">Rounded All</span>
                         </div>
                         <div class="text-center">
-                            <img src="{{ asset('assets/images/settings/dark/08.png')}}" alt="pill-one-side"
+                            <img src="{{ asset('assets/images/settings/dark/08.png') }}" alt="pill-one-side"
                                 class="mode dark-img img-fluid btn-border p-0 flex-column mb-2" data-setting="sidebar"
                                 data-name="sidebar-item" data-value="navs-pill" />
-                            <img src="{{ asset('assets/images/settings/light/09.png')}}" alt="pill-one-side"
+                            <img src="{{ asset('assets/images/settings/light/09.png') }}" alt="pill-one-side"
                                 class="mode light-img img-fluid btn-border p-0 flex-column mb-2"
                                 data-setting="sidebar" data-name="sidebar-item" data-value="navs-pill" />
                             <span class="mt-2">Pill One Side</span>
                         </div>
                         <div class="text-center">
-                            <img src="{{ asset('assets/images/settings/dark/09.png')}}" alt="pill-all"
+                            <img src="{{ asset('assets/images/settings/dark/09.png') }}" alt="pill-all"
                                 class="mode dark-img img-fluid btn-border p-0 flex-column" data-setting="sidebar"
                                 data-name="sidebar-item" data-value="navs-pill-all" />
-                            <img src="{{ asset('assets/images/settings/light/08.png')}}" alt="pill-all"
+                            <img src="{{ asset('assets/images/settings/light/08.png') }}" alt="pill-all"
                                 class="mode light-img img-fluid btn-border p-0 flex-column" data-setting="sidebar"
                                 data-name="sidebar-item" data-value="navs-pill-all" />
                             <span class="mt-2">Pill All</span>
@@ -343,37 +340,37 @@
                     <h5 class="mt-4 mb-3">Navbar Style</h5>
                     <div class="d-grid gap-3 grid-cols-2">
                         <div class="text-center">
-                            <img src="{{ asset('assets/images/settings/dark/11.png')}}" alt="image"
+                            <img src="{{ asset('assets/images/settings/dark/11.png') }}" alt="image"
                                 class="mode dark-img img-fluid btn-border p-0 flex-column mb-2" data-setting="navbar"
                                 data-target=".iq-navbar" data-name="navbar-type" data-value="nav-glass" />
-                            <img src="{{ asset('assets/images/settings/light/10.png')}}" alt="image"
+                            <img src="{{ asset('assets/images/settings/light/10.png') }}" alt="image"
                                 class="mode light-img img-fluid btn-border p-0 flex-column mb-2" data-setting="navbar"
                                 data-target=".iq-navbar" data-name="navbar-type" data-value="nav-glass" />
                             <span class="mt-2">Glass</span>
                         </div>
                         <div class="text-center">
-                            <img src="{{ asset('assets/images/settings/dark/10.png')}}" alt="color"
+                            <img src="{{ asset('assets/images/settings/dark/10.png') }}" alt="color"
                                 class="mode dark-img img-fluid btn-border p-0 flex-column mb-2" data-setting="navbar"
                                 data-target=".iq-navbar-header" data-name="navbar-type" data-value="navs-bg-color" />
-                            <img src="{{ asset('assets/images/settings/light/11.png')}}" alt="color"
+                            <img src="{{ asset('assets/images/settings/light/11.png') }}" alt="color"
                                 class="mode light-img img-fluid btn-border p-0 flex-column mb-2" data-setting="navbar"
                                 data-target=".iq-navbar-header" data-name="navbar-type" data-value="navs-bg-color" />
                             <span class="mt-2">Color</span>
                         </div>
                         <div class="text-center">
-                            <img src="{{ asset('assets/images/settings/dark/12.png')}}" alt="sticky"
+                            <img src="{{ asset('assets/images/settings/dark/12.png') }}" alt="sticky"
                                 class="mode dark-img img-fluid btn-border p-0 flex-column mb-2" data-setting="navbar"
                                 data-target=".iq-navbar" data-name="navbar-type" data-value="navs-sticky" />
-                            <img src="{{ asset('assets/images/settings/light/12.png')}}" alt="sticky"
+                            <img src="{{ asset('assets/images/settings/light/12.png') }}" alt="sticky"
                                 class="mode light-img img-fluid btn-border p-0 flex-column mb-2" data-setting="navbar"
                                 data-target=".iq-navbar" data-name="navbar-type" data-value="navs-sticky" />
                             <span class="mt-2">Sticky</span>
                         </div>
                         <div class="text-center">
-                            <img src="{{ asset('assets/images/settings/dark/13.png')}}" alt="transparent"
+                            <img src="{{ asset('assets/images/settings/dark/13.png') }}" alt="transparent"
                                 class="mode dark-img img-fluid btn-border p-0 flex-column mb-2" data-setting="navbar"
                                 data-target=".iq-navbar" data-name="navbar-type" data-value="navs-transparent" />
-                            <img src="{{ asset('assets/images/settings/light/13.png')}}" alt="transparent"
+                            <img src="{{ asset('assets/images/settings/light/13.png') }}" alt="transparent"
                                 class="mode light-img img-fluid btn-border p-0 flex-column mb-2" data-setting="navbar"
                                 data-target=".iq-navbar" data-name="navbar-type" data-value="navs-transparent" />
                             <span class="mt-2">Transparent</span>
@@ -390,46 +387,51 @@
 
     <script>
         const datepickers = document.querySelectorAll('.vanila-datepicker')
-            Array.from(datepickers, (elem) => {
+        Array.from(datepickers, (elem) => {
             new Datepicker(elem)
-            })
+        })
     </script>
 
     <!-- Library Bundle Script -->
-    <script src="{{ asset('assets/js/core/libs.min.js')}}"></script>
+    <script src="{{ asset('assets/js/core/libs.min.js') }}"></script>
 
     <!-- External Library Bundle Script -->
-    <script src="{{ asset('assets/js/core/external.min.js')}}"></script>
+    <script src="{{ asset('assets/js/core/external.min.js') }}"></script>
 
     <!-- Widgetchart Script -->
-    <script src="{{ asset('assets/js/charts/widgetcharts.js')}}"></script>
+    <script src="{{ asset('assets/js/charts/widgetcharts.js') }}"></script>
 
     <!-- mapchart Script -->
-    <script src="{{ asset('assets/js/charts/vectore-chart.js')}}"></script>
-    <script src="{{ asset('assets/js/charts/dashboard.js')}}"></script>
+    <script src="{{ asset('assets/js/charts/vectore-chart.js') }}"></script>
+    <script src="{{ asset('assets/js/charts/dashboard.js') }}"></script>
+
+    <!-- Script SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- fslightbox Script -->
-    <script src="{{ asset('assets/js/plugins/fslightbox.js')}}"></script>
+    <script src="{{ asset('assets/js/plugins/fslightbox.js') }}"></script>
 
     <!-- Settings Script -->
-    <script src="{{ asset('assets/js/plugins/setting.js')}}"></script>
+    <script src="{{ asset('assets/js/plugins/setting.js') }}"></script>
 
     <!-- Slider-tab Script -->
-    <script src="{{ asset('assets/js/plugins/slider-tabs.js')}}"></script>
+    <script src="{{ asset('assets/js/plugins/slider-tabs.js') }}"></script>
 
     <!-- Form Wizard Script -->
-    <script src="{{ asset('assets/js/plugins/form-wizard.js')}}"></script>
+    <script src="{{ asset('assets/js/plugins/form-wizard.js') }}"></script>
 
     <!-- AOS Animation Plugin-->
-    <script src="{{ asset('assets/vendor/aos/dist/aos.js')}}"></script>
+    <script src="{{ asset('assets/vendor/aos/dist/aos.js') }}"></script>
 
     <!-- App Script -->
-    <script src="{{ asset('assets/js/hope-ui.js')}}" defer></script>
+    <script src="{{ asset('assets/js/hope-ui.js') }}" defer></script>
+
+    <!-- Link JS Bootstrap Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
     {{-- Leaflet.js --}}
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-        crossorigin=""></script>
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
     @stack('javascript')
 </body>
