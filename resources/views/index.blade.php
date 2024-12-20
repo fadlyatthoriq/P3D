@@ -293,7 +293,7 @@
                             let latlng = markers.getLatLng();
                             updateLatLngInputs(latlng);
                         }
-                    }, 300);
+                    }, 600);
 
                     markers[id].on('dragend', function(e) {
                         const latlng = e.target.getLatLng();
@@ -306,7 +306,7 @@
 
                 setTimeout(() => {
                     maps[id].invalidateSize(); // Refresh ukuran peta setelah modal dibuka
-                }, 200);
+                }, 500);
             }
 
             // Fungsi untuk mengupdate input latitude dan longitude berdasarkan posisi marker

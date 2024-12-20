@@ -39,7 +39,7 @@
                             aria-describedby="longitude" placeholder="Longitude" value="{{ $d->longitude }}" readonly>
                     </div>
 
-                    <div id="map-edit{{ $d->id }}" style="height: 300px;"></div>
+                    <div id="map-edit{{ $d->id }}" style="height: 400px;"></div>
 
                     <div class="form-group">
                         <label for="jenispendapatan" class="form-label">Jenis Pendapatan</label>
