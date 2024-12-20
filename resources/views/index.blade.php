@@ -29,7 +29,7 @@
                                             </div>
                                             <div class="progress-detail">
                                                 <p class="mb-2">Total Data Wajib Pajak </p>
-                                                <h4 class="counter">{{$totalwajibpajak}}</h4>
+                                                <h4 class="counter">{{ $totalwajibpajak }}</h4>
                                             </div>
                                         </div>
                                     </div>
@@ -216,15 +216,147 @@
         </div>
     </main>
 
-    <script>
-        // Menambahkan event listener untuk setiap form dengan class .delete-form
-        document.querySelectorAll('.deletedata').forEach(function(form) {
-            form.addEventListener('submit', function(e) {
-                if (!confirm('Yakin ingin menghapus data ini?')) {
-                    e.preventDefault(); // Membatalkan pengiriman form jika konfirmasi ditolak
+    @push('javascript')
+        <script>
+            let map; // Peta global untuk modal tambah
+            let marker; // Marker global untuk modal tambah
+
+            // Fungsi untuk inisialisasi peta di modal tambah
+            function initMapTambah(lat, lng) {
+                if (!map) { // Pastikan peta hanya diinisialisasi sekali
+                    map = L.map('map').setView([-6.200000, 106.816666], 13); // Koordinat awal (Jakarta)
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        maxZoom: 19,
+                        attribution: '© OpenStreetMap'
+                    }).addTo(map);
+
+                    marker = L.marker([-6.200000, 106.816666], {
+                        draggable: true
+                    }).addTo(map);
+
+                    // Isi input awal dengan posisi marker setelah peta dan marker siap
+                    setTimeout(function() {
+                        if (marker) {
+                            let latlng = marker.getLatLng();
+                            updateLatLngInputsTambah(latlng);
+                        }
+                    }, 300);
+
+                    marker.on('dragend', function(e) {
+                        const latlng = e.target.getLatLng();
+                        updateLatLngInputsTambah(latlng); // Update input latitude/longitude untuk modal tambah
+                    });
+
+                    setTimeout(() => {
+                        map.invalidateSize(); // Refresh ukuran peta setelah modal dibuka
+                    }, 200);
+                }
+            }
+
+            function updateLatLngInputsTambah(latlng) {
+                document.getElementById('latitude').value = latlng.lat;
+                document.getElementById('longitude').value = latlng.lng;
+            }
+
+            // Menyimpan lokasi saat tombol save diklik
+            document.querySelector('.btn-save-tambah').addEventListener('click', function() {
+                if (marker) {
+                    let latlng = marker.getLatLng();
+                    if (latlng) {
+                        console.log(`Lokasi disimpan: Latitude: ${latlng.lat}, Longitude: ${latlng.lng}`);
+                    } else {
+                        console.error("Marker latlng is undefined.");
+                    }
                 }
             });
-        });
-    </script>
-        
+
+            // Menyimpan peta dan marker berdasarkan ID modal
+            let maps = {};
+            let markers = {};
+
+            // Fungsi untuk inisialisasi peta di modal edit
+            function initMapEdit(id, lat, lng) {
+                if (!maps[id]) {
+                    maps[id] = L.map('map-edit' + id).setView([lat, lng], 13); // Peta untuk modal dengan ID unik
+
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        maxZoom: 19,
+                        attribution: '© OpenStreetMap'
+                    }).addTo(maps[id]);
+
+                    markers[id] = L.marker([lat, lng], {
+                        draggable: true
+                    }).addTo(maps[id]);
+
+                    setTimeout(function() {
+                        if (markers) {
+                            let latlng = markers.getLatLng();
+                            updateLatLngInputs(latlng);
+                        }
+                    }, 300);
+
+                    markers[id].on('dragend', function(e) {
+                        const latlng = e.target.getLatLng();
+                        updateLatLngInputs(id, latlng); // Update input latitude/longitude
+                    });
+                } else {
+                    maps[id].setView([lat, lng], 13); // Update peta jika sudah ada
+                    markers[id].setLatLng([lat, lng]); // Update marker jika sudah ada
+                }
+
+                setTimeout(() => {
+                    maps[id].invalidateSize(); // Refresh ukuran peta setelah modal dibuka
+                }, 200);
+            }
+
+            // Fungsi untuk mengupdate input latitude dan longitude berdasarkan posisi marker
+            function updateLatLngInputs(id, latlng) {
+                document.getElementById('latitude' + id).value = latlng.lat;
+                document.getElementById('longitude' + id).value = latlng.lng;
+            }
+
+            // Ketika modal edit dibuka
+            $(document).on('click', '.edit-btn', function() {
+                const id = $(this).data('id'); // ID untuk modal yang akan dibuka
+                const lat = $(this).data('latitude'); // Latitude yang ada di database
+                const lng = $(this).data('longitude'); // Longitude yang ada di database
+
+                $('#modalUpdate' + id).modal('show'); // Menampilkan modal
+
+                // Tunggu hingga modal selesai tampil, lalu inisialisasi peta
+                $('#modalUpdate' + id).on('shown.bs.modal', function() {
+                    initMapEdit(id, lat, lng); // Inisialisasi peta untuk modal edit
+                });
+            });
+
+            // Ketika modal tambah dibuka
+            $('#staticBackdrop-1').on('shown.bs.modal', function() {
+                const lat = 0; // Koordinat default
+                const lng = 0; // Koordinat default
+
+                initMapTambah(lat, lng); // Inisialisasi peta untuk modal tambah
+            });
+
+            // Menyimpan lokasi saat tombol save diklik
+            document.querySelector('.btn-save-tambah').addEventListener('click', function() {
+                if (marker) {
+                    let latlng = marker.getLatLng();
+                    if (latlng) {
+                        console.log(`Lokasi disimpan: Latitude: ${latlng.lat}, Longitude: ${latlng.lng}`);
+                    } else {
+                        console.error("Marker latlng is undefined.");
+                    }
+                }
+            });
+
+            // Menambahkan event listener untuk setiap form dengan class .delete-form
+            document.querySelectorAll('.deletedata').forEach(function(form) {
+                form.addEventListener('submit', function(e) {
+                    if (!confirm('Yakin ingin menghapus data ini?')) {
+                        e.preventDefault(); // Membatalkan pengiriman form jika konfirmasi ditolak
+                    }
+                });
+            });
+        </script>
+    @endpush
 @endsection

@@ -15,7 +15,7 @@
                     <div class="form-group">
                         <label for="npwpd" class="form-label">NPWPD</label>
                         <input type="text" class="form-control" name="npwpd" id="npwpd"
-                            aria-describedby="NPWPD" placeholder="NPWPD" value="{{ $d->npwpd }}" required>
+                            aria-describedby="NPWPD" placeholder="NPWPD" value="{{ $d->npwpd }}" required autofocus>
                     </div>
                     <div class="form-group">
                         <label for="namausaha" class="form-label">Nama Usaha</label>
@@ -39,7 +39,7 @@
                             aria-describedby="longitude" placeholder="Longitude" value="{{ $d->longitude }}" readonly>
                     </div>
 
-                    <div id="map{{ $d->id }}" style="height: 400px;"></div>
+                    <div id="map-edit{{ $d->id }}" style="height: 300px;"></div>
 
                     <div class="form-group">
                         <label for="jenispendapatan" class="form-label">Jenis Pendapatan</label>
@@ -132,53 +132,56 @@
     </div>
 </div>
 
-@push('javascript')
-<script>
+{{-- <script>
     // Variabel untuk menyimpan peta dan marker
-    let maps = {}; // peta
-    let markers = {}; // marker
+    let maps = {}; // Objek untuk menyimpan peta berdasarkan ID
+    let markers = {}; // Objek untuk menyimpan marker berdasarkan ID
 
-    // Fungsi untuk membuka modal dan menampilkan peta
+    // Fungsi untuk membuka modal dan menginisialisasi peta
     function openEditModal(id, lat, lng) {
-        // Mengupdate input latitude dan longitude
+        // Dapatkan modal menggunakan ID dinamis
+        const modal = document.getElementById('modalUpdate' + id);
+
+        // Pastikan nilai latitude dan longitude diisi pada input
         document.getElementById('latitude' + id).value = lat.toFixed(6);
         document.getElementById('longitude' + id).value = lng.toFixed(6);
 
-        // Dapatkan modal menggunakan ID dinamis
-        const modal = new bootstrap.Modal(document.getElementById('modalUpdate' + id));
-        modal.show();
+        // Tampilkan modal
+        const bootstrapModal = new bootstrap.Modal(modal);
+        bootstrapModal.show();
 
-        // Jika peta dan marker belum ada, buat yang baru
-        if (!maps[id]) {
-            // Inisialisasi peta dengan koordinat
-            maps[id] = L.map('map' + id).setView([lat, lng], 13);
+        // Event ketika modal selesai ditampilkan
+        modal.addEventListener('shown.bs.modal', function () {
+            // Jika peta belum dibuat, buat peta baru
+            if (!maps[id]) {
+                // Inisialisasi peta
+                maps[id] = L.map('map-edit' + id).setView([lat, lng], 13);
 
-            // Tambahkan tile layer OpenStreetMap
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 19,
-                attribution: '© OpenStreetMap'
-            }).addTo(maps[id]);
+                // Tambahkan tile layer OpenStreetMap
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                    attribution: '© OpenStreetMap'
+                }).addTo(maps[id]);
 
-            // Tambahkan marker dengan fitur draggable
-            markers[id] = L.marker([lat, lng], {
-                draggable: true
-            }).addTo(maps[id]);
+                // Tambahkan marker dengan fitur draggable
+                markers[id] = L.marker([lat, lng], { draggable: true }).addTo(maps[id]);
 
-            // Event saat marker digeser
-            markers[id].on('dragend', function(e) {
-                const latlng = e.target.getLatLng();
-                updateLatLngInputs(id, latlng);
-            });
-        } else {
-            // Refresh peta dan marker jika sudah ada instance
-            maps[id].setView([lat, lng], 13);
-            markers[id].setLatLng([lat, lng]);
-        }
+                // Event saat marker digeser
+                markers[id].on('dragend', function (e) {
+                    const latlng = e.target.getLatLng();
+                    updateLatLngInputs(id, latlng);
+                });
+            } else {
+                // Refresh posisi peta dan marker jika sudah ada
+                maps[id].setView([lat, lng], 13);
+                markers[id].setLatLng([lat, lng]);
+            }
 
-        // Refresh ukuran peta
-        setTimeout(() => {
-            maps[id].invalidateSize();
-        }, 500);
+            // Refresh ukuran peta
+            setTimeout(() => {
+                maps[id].invalidateSize();
+            }, 200);
+        });
     }
 
     // Fungsi untuk mengupdate input latitude dan longitude
@@ -189,12 +192,11 @@
 
     // Event untuk memanggil openEditModal ketika modal akan dibuka
     document.querySelectorAll('.open-edit-modal').forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const id = this.getAttribute('data-id');
             const lat = parseFloat(this.getAttribute('data-lat'));
             const lng = parseFloat(this.getAttribute('data-lng'));
             openEditModal(id, lat, lng);
         });
     });
-</script>
-@endpush
+</script> --}}

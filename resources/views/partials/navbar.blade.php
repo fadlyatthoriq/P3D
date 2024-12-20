@@ -25,7 +25,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="mb-2 navbar-nav ms-auto align-items-center navbar-list mb-lg-0">
                     <li class="nav-item dropdown">
-                        <a class="py-0 nav-link d-flex align-items-center" href="#" id="navbarDropdown"
+                        <a class="nav-link py-0 d-flex align-items-center" href="javascript:void(0)" id="navbarDropdown" 
                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="{{ asset('assets/images/avatars/01.png') }}" alt="User-Profile"
                                 class="theme-color-default-img img-fluid avatar avatar-50 avatar-rounded" />
