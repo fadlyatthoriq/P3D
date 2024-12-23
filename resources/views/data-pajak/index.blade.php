@@ -97,7 +97,7 @@
                                                 </i>
                                                 <span>Tambah Data</span>
                                             </a>
-                                            @include('components.modal-tambah')
+                                            @include('data-pajak.create')
                                         </div>
                                     @endcan
                                 </div>
@@ -125,10 +125,7 @@
                                                         @can('manage wajib pajak')
                                                             <td>
                                                                 <div style="float: left;">
-                                                                    <button type="button"
-                                                                        class="btn btn-sm btn-icon text-primary flex-end"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#modalUpdate{{ $d->id }}">
+                                                                    <a href="{{ route('data-pajak.edit', $d->id)}}" class="btn btn-sm btn-icon text-primary flex-end">
                                                                         <span class="btn-inner" data-bs-toggle="tooltip"
                                                                             title="Edit Data">
                                                                             <svg class="icon-20" width="20"
@@ -150,8 +147,8 @@
                                                                                     stroke-linejoin="round"></path>
                                                                             </svg>
                                                                         </span>
-                                                                    </button>
-                                                                    @include('components.modal-edit')
+                                                                    </a>
+                                                                    
                                                                     <form action="{{ route('data-pajak.destroy', $d->id) }}"
                                                                         method="POST" class="deletedata">
                                                                         @csrf
@@ -215,6 +212,7 @@
             </div>
         </div>
     </main>
+    @endsection
 
     @push('javascript')
         <script>
@@ -225,7 +223,7 @@
             function initMapTambah(lat, lng) {
                 if (!map) { // Pastikan peta hanya diinisialisasi sekali
                     map = L.map('map').setView([-6.200000, 106.816666], 13); // Koordinat awal (Jakarta)
-                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
                         maxZoom: 19,
                         attribution: '© OpenStreetMap'
                     }).addTo(map);
@@ -254,8 +252,8 @@
             }
 
             function updateLatLngInputsTambah(latlng) {
-                document.getElementById('latitude').value = latlng.lat;
-                document.getElementById('longitude').value = latlng.lng;
+                document.getElementById('latitude').value = latlng.lat.toFixed(6);
+                document.getElementById('longitude').value = latlng.lng.toFixed(6);
             }
 
             // Menyimpan lokasi saat tombol save diklik
@@ -268,65 +266,6 @@
                         console.error("Marker latlng is undefined.");
                     }
                 }
-            });
-
-            // Menyimpan peta dan marker berdasarkan ID modal
-            let maps = {};
-            let markers = {};
-
-            // Fungsi untuk inisialisasi peta di modal edit
-            function initMapEdit(id, lat, lng) {
-                if (!maps[id]) {
-                    maps[id] = L.map('map-edit' + id).setView([lat, lng], 13); // Peta untuk modal dengan ID unik
-
-                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                        maxZoom: 19,
-                        attribution: '© OpenStreetMap'
-                    }).addTo(maps[id]);
-
-                    markers[id] = L.marker([lat, lng], {
-                        draggable: true
-                    }).addTo(maps[id]);
-
-                    setTimeout(function() {
-                        if (markers) {
-                            let latlng = markers.getLatLng();
-                            updateLatLngInputs(latlng);
-                        }
-                    }, 600);
-
-                    markers[id].on('dragend', function(e) {
-                        const latlng = e.target.getLatLng();
-                        updateLatLngInputs(id, latlng); // Update input latitude/longitude
-                    });
-                } else {
-                    maps[id].setView([lat, lng], 13); // Update peta jika sudah ada
-                    markers[id].setLatLng([lat, lng]); // Update marker jika sudah ada
-                }
-
-                setTimeout(() => {
-                    maps[id].invalidateSize(); // Refresh ukuran peta setelah modal dibuka
-                }, 500);
-            }
-
-            // Fungsi untuk mengupdate input latitude dan longitude berdasarkan posisi marker
-            function updateLatLngInputs(id, latlng) {
-                document.getElementById('latitude' + id).value = latlng.lat;
-                document.getElementById('longitude' + id).value = latlng.lng;
-            }
-
-            // Ketika modal edit dibuka
-            $(document).on('click', '.edit-btn', function() {
-                const id = $(this).data('id'); // ID untuk modal yang akan dibuka
-                const lat = $(this).data('latitude'); // Latitude yang ada di database
-                const lng = $(this).data('longitude'); // Longitude yang ada di database
-
-                $('#modalUpdate' + id).modal('show'); // Menampilkan modal
-
-                // Tunggu hingga modal selesai tampil, lalu inisialisasi peta
-                $('#modalUpdate' + id).on('shown.bs.modal', function() {
-                    initMapEdit(id, lat, lng); // Inisialisasi peta untuk modal edit
-                });
             });
 
             // Ketika modal tambah dibuka
@@ -359,4 +298,4 @@
             });
         </script>
     @endpush
-@endsection
+

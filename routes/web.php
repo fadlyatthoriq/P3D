@@ -19,7 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 route::middleware('auth', 'verified')->group(function () {
     route::resource('index', IndexController::class);
-    route::get('/',[IndexController::class, 'index'])->name('index');
+    route::get('/',[IndexController::class, 'index'])->name('data-pajak.index');
+    route::get('/data-pajak/{id}/edit', [IndexController::class, 'edit'])->name('data-pajak.edit');
     Route::put('/data-pajak/{id}', [IndexController::class, 'update'])->name('data-pajak.update');
     Route::delete('/{id}', [IndexController::class, 'destroy'])->name('data-pajak.destroy');
     route::get('/maps', [MapController::class, 'index'])->name('maps');

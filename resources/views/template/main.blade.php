@@ -384,13 +384,6 @@
         </div>
     </div>
 
-    <script>
-        const datepickers = document.querySelectorAll('.vanila-datepicker')
-        Array.from(datepickers, (elem) => {
-            new Datepicker(elem)
-        })
-    </script>
-
     <!-- Library Bundle Script -->
     <script src="{{ asset('assets/js/core/libs.min.js') }}"></script>
 
@@ -428,13 +421,13 @@
     {{-- Popper JS --}}
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 
-    
-
     {{-- Leaflet.js --}}
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
     @stack('javascript')
+
+    @yield('javascript-formedit')
 </body>
 
 </html>

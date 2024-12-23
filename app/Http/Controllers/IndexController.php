@@ -31,7 +31,7 @@ class IndexController extends Controller
         $data = DataPajak::latest()->paginate(10);
         $totalwajibpajak = DataPajak::count();
 
-        return view('index', compact('users', 'data', 'totalwajibpajak'));
+        return view('data-pajak.index', compact('users', 'data', 'totalwajibpajak'));
     }
 
     /**
@@ -64,7 +64,16 @@ class IndexController extends Controller
 
         // Berikan notifikasi sukses
         Alert::success('Success', 'Berhasil Menambahkan data!');
-        return redirect()->route('index');
+        return redirect()->route('data-pajak.index');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        $data = DataPajak::findOrFail($id);
+        return view('data-pajak.edit', compact('data'));
     }
 
     /**
@@ -100,7 +109,7 @@ class IndexController extends Controller
     
         // Berikan notifikasi sukses
         Alert::success('Success', 'Berhasil Memperbarui data!');
-        return redirect()->route('index');
+        return redirect()->route('data-pajak.index');
     }
 
     public function destroy($id)
@@ -109,6 +118,6 @@ class IndexController extends Controller
         $data->delete(); // Hapus data
 
         Alert::success('Success', 'Data berhasil dihapus!');
-        return redirect()->route('index'); // Kembali ke halaman utama
+        return redirect()->route('data-pajak.index'); // Kembali ke halaman utama
     }
 }
