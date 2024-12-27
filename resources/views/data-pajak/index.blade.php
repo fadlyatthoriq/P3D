@@ -222,13 +222,13 @@
             // Fungsi untuk inisialisasi peta di modal tambah
             function initMapTambah(lat, lng) {
                 if (!map) { // Pastikan peta hanya diinisialisasi sekali
-                    map = L.map('map').setView([-6.200000, 106.816666], 13); // Koordinat awal (Jakarta)
+                    map = L.map('map').setView([-6.2857, 106.9492], 13); // Koordinat awal (Jakarta)
                     L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
                         maxZoom: 19,
                         attribution: '© OpenStreetMap'
                     }).addTo(map);
 
-                    marker = L.marker([-6.200000, 106.816666], {
+                    marker = L.marker([-6.2857, 106.9492], {
                         draggable: true
                     }).addTo(map);
 

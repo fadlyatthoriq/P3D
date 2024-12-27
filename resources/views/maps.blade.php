@@ -42,11 +42,22 @@
 
 @push('javascript')
     <script>
-        const map = L.map('map').setView([-6.231712496602681, 106.97971914236066], 12);
+        const map = L.map('map').setView([-6.258862927234698, 106.95082428096438], 13);
 
         const tiles = L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '© OpenStreetMap'
         }).addTo(map);
+
+    // Tambahkan polygon untuk Kecamatan Pondok Gede
+    fetch('/assets/layerPolygon')
+    .then(response => response.json())
+    .then(data => {
+        L.geoJson(data, {
+            onEachFeature: function(feature, layer) {
+                layer.bindPopup("Kelurahan " + feature.properties.NAMOBJ + ", Kecamatan " + feature.properties.WADMKC + ", " + feature.properties.WADMKK + ", Provinsi " + feature.properties.WADMPR + ".");
+            }
+        }).addTo(map);
+    });
     </script>
 @endpush

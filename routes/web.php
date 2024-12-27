@@ -24,6 +24,9 @@ route::middleware('auth', 'verified')->group(function () {
     Route::put('/data-pajak/{id}', [IndexController::class, 'update'])->name('data-pajak.update');
     Route::delete('/{id}', [IndexController::class, 'destroy'])->name('data-pajak.destroy');
     route::get('/maps', [MapController::class, 'index'])->name('maps');
+    route::get('/assets/layerPolygon', function(){
+        return response()->file(public_path('assets/polygonBekasi.geojson'));
+    });
 });
 
 route::get('/logins', function(){

@@ -35,7 +35,7 @@ class AuthenticatedSessionController extends Controller
         if ($user->hasRole('Admin')) {
             return redirect()->route('users.index');
         }else {
-            return redirect()->route('index');
+            return redirect()->route('data-pajak.index');
         }
 
         Alert::success('Success', 'Anda berhasil login.');
