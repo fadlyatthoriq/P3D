@@ -29,4 +29,6 @@ class DataPajak extends Model
         'alamatpemilik',
         'teleponpemilik',
     ];
+
+    protected $hidden = ['created_at', 'updated_at']; // Sembunyikan kolom ini secara default
 }

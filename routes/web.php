@@ -27,6 +27,7 @@ route::middleware('auth', 'verified')->group(function () {
     route::get('/assets/layerPolygon', function(){
         return response()->file(public_path('assets/polygonBekasi.geojson'));
     });
+    route::get('/api/markers', [MapController::class, 'marker']);
 });
 
 route::get('/logins', function(){

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\DataPajak;
 
 class MapController extends Controller
 {
@@ -20,4 +21,11 @@ class MapController extends Controller
 
         return view('maps', compact('users'));
     }
+
+    public function marker()
+    {
+        $markers = DataPajak::all();
+        return response()->json($markers);
+    }
 }
+
